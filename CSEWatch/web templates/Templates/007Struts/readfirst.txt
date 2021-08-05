@@ -1,0 +1,46 @@
+This frames kit contains 13 pages and files, and 4 images.
+
+
+heading.html
+This page controls your main frameset heading.  If you need more height for this section you would change the number in the first frameset definition on the index.html page. 
+The heading background  image used on this page is 1000 pixels in width.  We recommend maintaining that width if you change the image so that it renders properly when viewed at a 1024x768 monitor resolution.  You must modify the style sheet to change the image. Or name your new image top-bkg. jpg and adjust the height in the style sheet.
+Heading text - If you remove the heading text (h1 header tag) replace it with a non breaking space ( &nbsp;) If you don't lke the way it floats around at different browser width settings, get a free copy of the photo editor Photoscape and place your text directly on the heading image at the desired location.
+
+page1.html
+page2.html
+page3.html
+page4.html
+page5.html
+These pages are your content pages which are targetted into the third row of the main frameset.  They are just simple HTML pages.  Each page contains a block of javascript that redirects to the main frameset if the page is indexed by the SEs and someone accesses it. 
+If you rename these pages or create new ones be sure to change the navigation page to reflect the changes.
+
+blank.html
+The blank page is simply used to center the navigation device.
+
+navigation.html
+This page displays your links.  The style sheet causes them to display as buttons.
+We added scrolling to this frame so you can add and remove links as needed.
+
+
+footer.html
+This page contains your copyright information.
+
+
+framesset.css
+This text file is the linked style sheet that controls the appearance of text on your content pages.  Always keep it in the same folder as the index.html page and content pages. 
+If you create new pages for your site be sure to include the statement in the head section that links to this file.
+
+frames-feedback.php
+This is the script that processes the contact form on page5.html
+To activate the form change the action statement on page5.html to action="frames-feedback.php"
+Change email@address on the script to your desired email account info.
+
+readfirst.txt
+Directions for modifying kit.
+
+
+ If you need help with CSS visit our HTML-CSS tutorial at www.createafreewebsite.net/html_tutorial/htmltoc.htm. 
+
+Need more help with your frames kit?  Contact Charles at netsuccess20004u@aol.com. Place Need Frames Help in the subject line.
+
+Need web hosting for your finished website?  We sell hosting for $3.25 a month and we provide more storage and bandwidth than most web hosts charging twice as much.  Visit cafwhosting.com and get a free domain name, free set up and more resources than you'll ever need for only $39 a year.

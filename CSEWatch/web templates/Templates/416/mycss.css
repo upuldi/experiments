@@ -1,0 +1,153 @@
+* {
+margin: 0 0 0 0;
+padding: 0 0 0 0
+}
+
+/*Change background color of page here*/
+/*For frame to frame design remove padding*/
+body {
+color: #0e0e0e;
+background: #5a0000;
+font-family: Arial, verdana, tahoma , serif;
+font-style: normal;
+font-weight: normal
+}
+
+
+#head {
+width: 100%;
+background: #800000;
+float: left
+}
+
+
+#left {
+width: 20%;
+padding: 0 2% 0 2%;
+float: left
+}
+
+/*Width adjusted for padding*/
+#navigate {
+width: 20%;
+padding: 0 2% 0 2%;
+float: left
+}
+
+/*Width adjusted for padding and width of all nested divisions*/
+#content {
+width: 44%;
+padding: 0 4% 0 4%;
+background: #ffffff;
+float: left
+}
+
+#footer {
+width: 100%;
+background: #800000;
+float: left
+}
+
+/*Max width adjust for body padding*/
+#head img {
+float: left;
+max-width: 80%;
+padding: 5% 0 5% 12%
+}
+
+#head h1 {
+font-size : 24px; 
+float: left; 
+color :#efefef;
+margin: 1% 0 0 12%  }
+
+#navigate h2, #left h2 {  
+font-size : 16px; 
+color: #efefef;
+text-align : center;
+margin: 2% 0 2% 0 }
+
+
+#navigate p ,#left p {
+font-size: 14px;
+color: #efefef;
+text-align: center; 
+text-indent: 0px; 
+margin: 2% 0 2% 0;
+padding: 0 0 0 0;
+  }
+
+
+#navigate a {
+text-decoration : none; 
+font-weight: 600;
+color:#efefef; 
+
+ }
+
+#navigate a:hover { 
+text-decoration: underline;
+color: #ff8080}
+
+#content img { 
+margin: .5% 1%;
+border: solid #000000 1px }
+
+/*Resizes images and form when width of container changes  -  on most browsers*/
+img,
+ textarea,
+form input {
+max-width: 90%
+}
+
+
+#content h1 {  
+font-size : 20px; 
+text-align : center;
+color : #800000;
+margin: 2% 0 2% 0 }
+
+#content h2 {  
+font-size : 18px; 
+text-align : center;
+margin: 2% 0 2% 0}
+
+
+
+
+#content p { 
+font-size : 16px; 
+text-align : left; 
+text-indent : 16px ;
+margin: 2% 0 2% 0 }
+
+
+
+#content a {
+   color: #000000}
+
+#content a:visited {
+   color: #800000}
+
+
+address  {
+font-size : 12px; 
+text-align : center; 
+color: #efefef;
+padding: .5% 0 .5% 0 }
+
+address a{
+color : #ffcc00}
+
+
+form { 
+font-size : 16px; 
+text-align : left;
+line-height: 150%
+}
+
+#content p.center {
+text-align: center;
+padding: 0 0;
+margin: 0 0
+}

@@ -1,0 +1,184 @@
+* {
+margin: 0 0 0 0;
+padding: 0 0 0 0
+}
+
+/*Change background color of page here*/
+/*For frame to frame design remove padding*/
+body {
+background: #6699cc;
+padding: 1% 10% 1% 10%;
+font-size: 100%
+}
+
+
+/*Width adjusted for border*/
+#head {
+width: 100%;
+height: 305px;
+background-image: url(img/top-bkg.jpg);
+background-repeat: no-repeat;
+background-position: center;
+float: left
+}
+
+/*Change background color of main division here*/
+#main {
+width:100%;
+background: #ffffff;
+float: left
+}
+
+#left {
+width: 20%;
+padding: 0 0 0 4%;
+float: left
+}
+
+/*Width adjusted for padding*/
+#navigate {
+width: 20%;
+padding: 0 4% 0 0;
+float: left
+}
+
+/*Width adjusted for padding and width of all nested divisions*/
+#content {
+width: 44%;
+padding: 0 4% 0 4%;
+float: left
+}
+
+#footer {
+width: 100%;
+background: #336799;
+float: left
+}
+
+#head h1 {
+font-family: Arial, serif;
+font-style : normal ;
+font-size : 1.5em; 
+font-weight :bold;
+float: left; 
+color :#efefef;
+ margin: 1% 0 0 12%  }
+
+/*If you increase or decrease the length of your slogan adjust the negative value in the margin setting to move it right or left*/
+/*Reduction moves to right*/
+/*Increasing moves left*/
+#head p {
+font-family: Arial, serif;
+font-style : italic ;
+font-size : .875em; 
+font-weight :bold;
+float: left;
+text-indent: 0px;
+color :#ffcc00;
+margin: 50px 0 0 -170px  }
+
+
+
+
+#navigate p ,#left p {
+ font-family: Arial, Verdana, serif; 
+font-style : normal ;
+font-weight :550;
+text-align: center; 
+text-indent: 0px; 
+font-size: .875em;
+margin: 4% 0 4% 0;
+padding: 0 0 0 0;
+  }
+
+
+#navigate a {
+text-decoration : none; 
+font-weight: 700;
+color:#336699; 
+
+ }
+
+#navigate a:hover { 
+text-decoration: underline;
+color: #000000}
+
+#content img { 
+margin: 10px;
+border: solid #000000 1px }
+
+/*Resizes images and form when width of container changes  -  on most browsers*/
+img,
+ textarea,
+form input {
+max-width: 100%
+}
+
+address  {
+ font-family: Arial, serif; 
+font-style : normal ;
+font-size : .675em; 
+font-weight :700; 
+text-align : center; 
+color: #efefef;
+padding: .5% 0 .5% 0 }
+
+address a{
+color : #ffcc00}
+
+h1 {  
+font-family: Verdana;
+font-style : normal ;
+font-size : 1.25em; 
+font-weight :bold;
+text-align : center;
+color : #336699;
+margin: 4% 0 4% 0 }
+
+h2 {  
+font-family: Verdana;
+font-style : normal ;
+font-size : 1.125em; 
+font-weight :bold;
+text-align : center;
+color : #000000;
+margin: 4% 0 4% 0}
+
+
+#navigate h2 {  
+font-family: Verdana;
+font-style : normal ;
+font-size : 1.125em; 
+font-weight :bold;
+text-align : center;
+color : #000000;
+margin: 4% 0 4% 0 }
+
+
+p { 
+font-family: Verdana;
+font-style : normal ;
+font-size : .875em; 
+font-weight :550;
+text-align : left; 
+text-indent : 1em ;
+color: #000000;
+margin: 4% 0 4% 0 }
+
+
+
+#content a {
+   color: #000000}
+
+#content a:visited {
+   color: #336699}
+
+
+form { 
+font-family: Verdana;
+font-style : normal ;
+font-size : .865em; 
+font-weight :550;
+text-align : left;
+line-height: 150%
+}

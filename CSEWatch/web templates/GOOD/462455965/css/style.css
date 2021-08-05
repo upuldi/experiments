@@ -1,0 +1,337 @@
+/*------------------------MAIN--------------------------------*/
+
+*{
+margin:0;
+padding:0;
+border:0;
+}
+html {
+width: 100%;
+background:#000;
+}
+
+body{
+background:url(../img/foot.jpg)bottom repeat-x;
+color: #333;
+font-family:Verdana;
+margin: 0px;
+width: 100%;
+}
+
+.navipos{
+margin-left: 18px;
+}
+
+.border{
+border: none;
+}
+
+#container{
+width: 1100px;
+margin:0 auto;
+}
+
+#bodyposition{
+
+margin:-12px 100px 0 100px;
+}
+
+#header{
+background:url(../img/header.jpg) no-repeat;
+width: 1100px;
+height: 171px;
+margin: 0 auto;
+}
+
+#logo{
+position:relative;
+top: 82px;
+left: 310px;
+}
+
+.float{
+float: left;
+height:217px;
+}
+
+#navi{
+background:url(../img/navi.png) no-repeat;
+height: 34px;
+font-size:11px;
+padding-top: 2px;
+padding-bottom: 3px;
+}
+
+#navi ul li {
+display: block;
+font-size:11px;
+float:left;
+letter-spacing:0.2px;
+margin:0 -5px;
+}
+#navi ul li a, ul li a span {
+display: block;
+text-decoration: none;
+padding:0px;
+} 
+#navi ul li a span {
+margin:1px 4px 5px 12px;
+padding:7px 17px 24px 1px;
+}
+
+#navi ul li a:hover span {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+#navi ul li a:hover {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+#navi ul li a:hover span {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}
+
+.activ-button span{
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+
+.activ-button {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+
+.activ-button span{
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}
+
+a{
+text-decoration:none;
+outline:none;
+}
+
+#maincontent{
+background:url(../img/maincontent.png) no-repeat;
+height: 231px;
+width: 900px;
+font-size:11px;
+padding: 10px 0;
+}
+#maincontent p{
+margin: 36px 35px -25px 26px;
+}
+
+.contentposition{
+color:#C03;
+font-size:14px;
+margin-left:27px;
+padding-top: 4px;
+text-align:left;
+width: 100px;
+}
+/*-------------------CATEGORIES---------------------*/
+#catmenu{
+background:url(../img/catmenu.png) no-repeat;
+height: 262px;
+width: 900px;
+font-size:11px;
+margin: -20px 0; 
+}
+
+.catposition{
+color:#FFFFF1;
+font-size:14px;
+margin-left:28px;
+padding-top: 12px;
+padding-bottom: 7px;
+font-weight: bold;
+}
+
+#sidebar{
+list-style:none;
+padding: 0;
+margin:0;
+height:210px;
+width:235px;
+float:left;
+}
+
+#sidebar li{
+background:url(../img/button.png) no-repeat; 
+height:30px;
+width:245px;
+margin-top:1px;
+}
+
+#sidebar li a{
+color:#FFFFF2;
+display: block;
+text-indent:45px;
+line-height:30px;
+}
+
+#sidebar li a span:hover{
+background:url(../img/btn7.png) no-repeat;
+height: 50px;
+display: block;
+position:relative;
+left:0px;
+top:-10px;
+text-indent:45px;
+line-height:50px;
+}
+
+
+
+.communityposition{
+color:#FFFFF3;
+font-size:13px;
+margin-top:1px;
+margin-bottom:13px;
+}
+
+#textposition{
+color:#FFFFF4;
+float:left;
+padding: 0 30px;
+width:600px;
+height:210px;
+}
+/*------------------------------BUTTON 2------------------------*/
+.sidebar_p{
+background:url(../img/btn1.png) no-repeat !important;
+height: 46px !important;
+margin-bottom: -27px;
+position:relative;
+bottom: 10px;
+padding-top: 10px;
+}
+/*------------------------------LATEST NEWS------------------------*/
+#newspost{
+background:url(../img/news.png) no-repeat; 
+height:231px;
+margin: 33px 0 35px 0;
+}
+
+#newsposition{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 32px;
+padding-top: 7px;
+}
+
+#newsposition2{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 49px;
+padding-top: 7px;
+}
+
+#newsposition3{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 63px;
+padding-top: 7px;
+}
+
+.date{
+color:#C03;
+font-size: 11px;
+margin-bottom:1px;
+}
+
+.latnews{
+color:#FFFFF4;
+font-size: 11px;
+font-weight: lighter;
+padding:10px 0 20px 22px;
+}
+
+.links{
+color:#C03;
+text-decoration:underline;
+}
+/*----------------------FOOTHER-------------------------*/
+#navi2{
+height: 34px;
+font-size:11px;
+float:left;
+list-style-type:none;
+}
+
+#navi2 ul{
+font-family:Verdana;
+list-style-type:none;
+}
+
+#footpanel{
+margin-top: 55px;
+height: 48px;
+width:100%;
+text-align: center;
+}
+
+#dposition{
+font-size:11px;
+padding:19px 0 0 36px;
+}
+
+/*----------------------HOVER-------------------------*/
+
+#navi2 ul li {
+display: block;
+font-size:11px;
+float:left;
+letter-spacing:0.2px;
+margin:0 -5px;
+}
+#navi2 ul li a, ul li a span {
+color: #FFFFF5;
+display: block;
+text-decoration: none;
+padding:0px;
+} 
+#navi2 ul li a span {
+margin:1px 4px 3px 12px;
+padding:7px 17px 14px 1px;
+}
+#navi2 ul li a:hover span {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+#navi2 ul li a:hover {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+#navi2 ul li a:hover span {
+background: url(../img/hover.png) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}
+
+/*-----------OTHER------------*/
+
+.p_text{
+margin-top: -12px;
+}
+
+.p_text2{
+padding-top: 15px;
+}
+

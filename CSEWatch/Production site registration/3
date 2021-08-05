@@ -1,0 +1,9 @@
+Manual Settings
+
+Mail Server Username: admin+csewatch.com
+Incoming Mail Server: mail.csewatch.com
+Incoming Mail Server: (SSL) mail.mochahost.com
+Outgoing Mail Server: mail.csewatch.com (server requires authentication) port 2525
+Outgoing Mail Server: (SSL) *.mochahost.com (server requires authentication) port 465
+Supported Incoming Mail Protocols: POP3, POP3S (SSL/TLS), IMAP, IMAPS (SSL/TLS)
+Supported Outgoing Mail Protocols: SMTP, SMTPS (SSL/TLS)

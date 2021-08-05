@@ -1,0 +1,44 @@
+/*---------------------IE7-----------------*/
+
+*:first-child+html body{
+background:#000 url(../img/foot.jpg) bottom left repeat-x !important;
+color: #333;
+font-family:Verdana;
+margin: 0px;
+width: 100%;
+padding:0px;
+}
+
+*:first-child+html #sidebar li{
+background:url(../img/button.png) no-repeat; 
+height:30px;
+width:245px;
+margin-top:-1px;
+}
+
+*:first-child+html #sidebar li a{
+color:#FFFFF2;
+display: block;
+text-indent:50px;
+line-height:30px;
+}
+
+*:first-child+html #sidebar li a span:hover{
+background:url(../img/btn7.png) no-repeat;
+height: 50px;
+display: block;
+position:relative;
+left:0px;
+top:-10px;
+text-indent:50px;
+line-height:50px;
+cursor:pointer;
+}
+
+
+*:first-child+html #footpanel{
+margin-top: -40px;
+height: 48px;
+width:100%;
+text-align: center;
+}

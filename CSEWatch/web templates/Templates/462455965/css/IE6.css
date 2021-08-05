@@ -1,0 +1,255 @@
+/*------------------------MAIN--------------------------------*/
+
+
+
+.float{
+float: left;
+margin-top:-4px;
+}
+
+.navipos{
+margin-left: 18px;
+}
+
+body{
+background:#000 url(../img/foot.jpg) bottom left repeat-x !important;
+color: #333;
+font-family:Verdana;
+margin: 0px;
+width: 100%;
+}
+
+#container{
+width: 1100px;
+margin:0 auto;
+}
+
+#bodyposition{
+margin:0 100px 0 100px;
+}
+
+#logo{
+position:relative;
+top: 82px;
+left: 310px;
+}
+
+a{
+text-decoration:none;
+}
+
+#maincontent{
+background:url(../img/maincontent.png) no-repeat;
+height: 231px;
+width: 900px;
+font-size:11px;
+padding: 10px 0;
+margin-top: -15px;
+}
+#maincontent p{
+margin: 30px 35px -25px 20px;
+}
+
+.contentposition{
+color:#C03;
+font-size:14px;
+margin-left:20px;
+padding-top: 15px;
+text-align:left;
+width: 100px;
+}
+/*-------------------CATEGORIES---------------------*/
+#catmenu{
+background:url(../img/catmenu.png) no-repeat;
+height: 262px;
+width: 900px;
+font-size:11px;
+margin: -30px 0; 
+}
+
+.catposition{
+color:#FFFFF1;
+font-size:14px;
+margin-left:20px;
+padding-top: 10px;
+padding-bottom: 9px;
+font-weight: bold;
+}
+
+#sidebar{
+list-style:none; 
+height:210px;
+width:235px;
+}
+
+#sidebar li{
+background:url(../img/button.jpg) no-repeat; 
+height:30px;
+width:245px;
+margin-bottom: -1px;
+}
+
+#sidebar li a{
+color:#FFFFF2;
+display: block;
+text-indent:50px;
+line-height:29px;
+}
+
+#sidebar li a:hover{
+background:url(../img/btn7ie6.png) no-repeat;
+height: 30px;
+display: block;
+position:relative;
+top:-1px;
+line-height:32px !important;
+text-indent:50px !important;
+margin-top: -1px;
+margin-bottom: 1px !important;
+}
+
+.communityposition{
+color:#FFFFF3;
+font-size:14px;
+margin-bottom:20px
+}
+
+#textposition{
+color:#FFFFF4;
+padding: 0 30px;
+width:600px;
+height:210px;
+margin: -215px 30px 0px 120px;
+}
+/*------------------------------BUTTON 2------------------------*/
+.sidebar_p{
+background:url(../img/btn7ie6.png) no-repeat !important;
+height: 30px !important;
+margin-top: 0px;
+margin-bottom: 0px !important;
+position:relative;
+bottom: 0px;
+padding-top: 0px;
+}
+
+/*------------------------------LATEST NEWS------------------------*/
+#newspost{
+background:url(../img/news.png) no-repeat; 
+height:231px;
+margin: 40px 0 20px 0;
+}
+
+#newsposition{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 25px;
+padding-top: 9px;
+}
+
+#newsposition2{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 50px;
+padding-top: 9px;
+}
+
+#newsposition3{
+float:left;
+height:180px;
+width:239px;
+font-size: 11px;
+padding-left: 70px;
+padding-top: 9px;
+}
+
+.date{
+color:#C03;
+font-size: 11px;
+margin-bottom:1px;
+}
+
+.latnews{
+color:#FFFFF5;
+font-size: 11px;
+font-weight: bold;
+padding:10px 0 20px 15px;
+}
+
+.links{
+color:#C03;
+text-decoration:underline;
+}
+/*----------------------FOOTHER-------------------------*/
+
+
+#footpanel{
+margin-top: -48px;
+height: 48px;
+width:100%;
+text-align: center;
+}
+
+#dposition{
+font-size:11px;
+}
+
+
+#navi2{
+height: 34px;
+font-size:11px;
+float:left;
+list-style-type:none;
+padding-bottom: 20px;
+}
+
+#navi ul li a:hover span {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+#navi ul li a:hover {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+#navi ul li a:hover span {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}
+#navi2 ul li a:hover span {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+#navi2 ul li a:hover {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+#navi2 ul li a:hover span {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}
+.activ-button span{
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-color:#FFF;
+color:#C03;
+}
+
+.activ-button {
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top left;
+cursor:pointer;
+}
+
+.activ-button span{
+background: url(../img/hover.jpg) no-repeat 0 -30px;
+background-position: top right;
+cursor:pointer;
+}

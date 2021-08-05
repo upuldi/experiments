@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+
+<html>
+<head>
+  <title>Free Frames Website Template Kit 010</title>
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="javascript" type="text/javascript">
+var fname="content";  
+
+  window.onload=function(){
+  var d=document.location.search;
+  if(d!='')top.frames[fname].document.location.href=d.substring(d.lastIndexOf('?')+1,d.length);
+  }
+  </script>
+
+
+</head>
+
+<frameset rows="327, *, 25">
+  <frame src="heading.html" frameborder="1" scrolling="no">
+
+<frameset cols="225,*">
+    <frame src="navigation.html" frameborder="0" scrolling="yes">
+
+  <frame src="page1.html" frameborder="1" name="content" scrolling="auto" id="content">
+  </frameset>
+  <frame src="footer.html" frameborder="1" scrolling="no">
+
+  <noframes>
+    <body>
+      <p>HTML non frames version of web page goes in here.</p>
+    </body>
+  </noframes>
+</frameset>
+</html>
