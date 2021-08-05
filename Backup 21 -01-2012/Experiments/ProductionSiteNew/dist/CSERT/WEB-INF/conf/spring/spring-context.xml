@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  - Application context definition for RoseIndia Login Application on Hibernate.
+	-->
+<beans>
+
+    <bean id="realTimeMarketData" class="com.job.realtime.RealTimeMarketData">
+        <property name="jdbcMarketStatus" ref="jDBCMarketStatus"/>
+        <property name="jdbctradeData" ref="jdbctradeData"/>
+        <property name="jdbcrteData" ref="jdbcrteData"/>
+    </bean>
+
+    <bean id="eodMarketData" class="com.job.eod.EODMarketData">
+        <property name="eodDataDao" ref="eODDataDao"/>
+    </bean>
+
+    <bean id="goldPriceDaily" class="com.job.eod.GoldPriceDaily">
+        <property name="goldPriceDao" ref="goldPriceDao"/>
+    </bean>
+
+    <bean id="eodTrades" class="com.job.eod.EodTrades">
+        <property name="eodDataDao" ref="eODDataDao"/>
+        <property name="stockTradeDao" ref="stockTradeDao"/>
+    </bean>
+
+    <bean id="eODTradingSummery" class="com.job.eod.EODTradingSummery">
+        <property name="dailyMarketSummeryManager" ref="dailyMarketSummeryManager"/>
+        <property name="marketSummeryDAO" ref="marketSummeryDAO"/>
+    </bean>
+
+    <bean id="eODRubberAuction" class="com.job.eod.EODRubberPrice"/>
+
+    <bean id="dailyMarketSummeryManager" class="com.manager.DailyMarketSummeryManagerImpl"/>
+
+    <bean id="contextApplicationContextProvider" class="com.framework.ApplicationContextProvider"/>
+
+    <bean id="jdbctradeData" class="com.db.JDBCTRADEData">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+    <bean id="jdbcrteData" class="com.db.JDBCRTEData">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+    <bean id="jDBCMarketStatus" class="com.db.JDBCMarketStatus">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="singleton" value="true"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:system.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+    <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
+    <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>/WEB-INF/conf/jdbc.properties</value>
+        </property>
+    </bean>
+
+    <!-- Local DataSource that works in any environment -->
+    <!-- Note that DriverManagerDataSource does not pool; it is not intended for production -->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"><value>${jdbc.driverClassName}</value></property>
+        <property name="url"><value>${jdbc.url}</value></property>
+        <property name="username"><value>${jdbc.username}</value></property>
+        <property name="password"><value>${jdbc.password}</value></property>
+    </bean>
+
+    <bean id="jdbcDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+
+    <!--<bean id="mainDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">-->
+        <!--<property name="driverClass" value="${jdbc.driverClassName}"/>-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
+        <!--<property name="username" value="${jdbc.username}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+        <!--<property name="idleConnectionTestPeriod" value="0"/>-->
+        <!--<property name="idleMaxAge" value="240"/>-->
+        <!--<property name="maxConnectionsPerPartition" value="2"/>-->
+        <!--<property name="minConnectionsPerPartition" value="1"/>-->
+        <!--<property name="partitionCount" value="2"/>-->
+        <!--<property name="acquireIncrement" value="1"/>-->
+        <!--<property name="statementsCacheSize" value="30"/>-->
+        <!--<property name="releaseHelperThreads" value="5"/>-->
+    <!--</bean>-->
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="mappingResources">
+            <list>
+                <value>conf/hbm/EODData.hbm.xml</value>
+                <value>conf/hbm/DailyMarketSummery.hbm.xml</value>
+                <value>conf/hbm/RubberPrice.hbm.xml</value>
+                <value>conf/hbm/Job.hbm.xml</value>
+                <value>conf/hbm/StockTrade.hbm.xml</value>
+                <value>conf/hbm/TradeProcess.hbm.xml</value>
+                <value>conf/hbm/CSEListedCompany.hbm.xml</value>
+                <value>conf/hbm/GoldPrice.hbm.xml</value>
+              <!--  <value>conf/hbm/PosNegContributors.hbm.xml</value>-->
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+
+    </bean>
+
+
+    <!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
+
+    <!--
+     Data access object: Hibernate implementation.
+    -->
+
+    <bean id="eODDataDao" class="com.dao.EODDataDaoHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="jobDao" class="com.dao.JOBDaoHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="marketSummeryDAO" class="com.dao.MarketSummeryDAOHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="rubberAuctionDao" class="com.dao.RubberAuctionDaoHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="stockTradeDao" class="com.dao.StockTradeDaoHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="goldPriceDao" class="com.dao.GoldPriceDaoHibernate">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+</beans>

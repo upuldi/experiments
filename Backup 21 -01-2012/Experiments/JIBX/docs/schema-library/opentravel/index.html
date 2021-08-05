@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JiBX - Opentravel Alliance Open Source Software</title>
+    <style type="text/css" media="all">
+      @import url("../css/maven-base.css");
+      @import url("../css/maven-theme.css");
+      @import url("../css/site.css");
+    </style>
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Don Corley" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://jibx.sf.net/schema-library/" id="bannerLeft">
+    
+            schema-library
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-09
+                      </div>
+            <div class="xright">            <a href="../../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">Introduction</a>
+          </li>
+          </ul>
+              <h5>Schema</h5>
+            <ul>
+              
+    <li class="none">
+              <strong>Opentravel.org</strong>
+        </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="../images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <head><meta name="description" content="Opentravel Alliance Open Source Software"><meta name="keywords" content="Opentravel Alliance, Open Source Software, Opentravel, Opentravel.org, Open Source"></head><div class="section"><h2><a name="JiBX_Opentravel_OSGi_Packaging_Project"></a>JiBX Opentravel OSGi Packaging Project</h2>
+<p><b>JiBX Opentravel OSGi Packaging Project</b> is a pre-packaged OSGi package for using the <a href="http://www.opentravel.org/" class="externalLink">OpenTravel</a> schema.
+      </p>
+<p>It doesn't get much simpler than this.</p>
+<p>This project has pre-packaged components ready to include into your project. Since the code has
+      already been bound to the schema, you can start using it right now. Just add the maven dependencies
+      to your project and you can start writing code.</p>
+<p>Maven will automatically include all the dependent packages in your project and in your war file.
+      OSGi will only load the modules that are needed on-demand. For example, If you are creating a hotel
+      reservation, the profile schema package will only load if you link the reservation to a profile.
+      No wonder there is so much excitement over OSGi.</p>
+<p>Try it. it's easy:</p>
+<p>Step 1: Add this dependency to your project:</p>
+<p><code>
+&lt;dependency&gt;<br />
+
+      	&lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;<br />
+
+      	&lt;artifactId&gt;jibx-ota-osgi-hotel&lt;/artifactId&gt;<br />
+
+      	&lt;version&gt;1.2.2-beta-1&lt;/version&gt;<br />
+
+    &lt;/dependency&gt;<br />
+</code></p>
+<p>Step 2: Start writing code. Cool.</p>
+<p>If you have about five minutes, you can create a project to create an opentravel message,
+      convert it to xml, then convert it back to a java object. Here goes!</p>
+<p>First, you need java, eclipse, and the eclipse maven plugin (m2eclipse).
+      This is a pretty standard development environment.</p>
+<p>From the eclipse menu, select: New -&gt; project -&gt; Maven -&gt; Maven Project</p>
+<p>Click 'Next', then click the 'Add archetype' button on the next screen</p>
+<p>Fill in the fields with this information:<br />
+
+    groupId: org.jibx.ota.osgi<br />
+
+    artifactId: jibx-ota-osgi-archetype<br />
+
+    version: 1.2.2-beta-1<br />
+</p>
+<p><img src="../images/archetype.jpg" alt="Archetype" /></p>
+<p>Click 'Next' and fill this screen with whatever you want. I entered:<br />
+
+
+      groupID: com.company.ota<br />
+
+      artifactId: ota-ping-test<br />
+</p>
+<p><img src="../images/archetype2.jpg" alt="Archetype" /></p>
+<p>Click 'Finish' and your project is built.<br />
+
+      Now we're ready to run it.</p>
+<p>First, right click on your project and select 'Run as' -&gt; 'Maven Install'</p>
+<p><img src="../images/archetype3.jpg" alt="Archetype" /></p>
+<p>This compiles the code and gets any dependent code</p>
+<p>Now, right click on your project and select 'Run as' -&gt; 'Maven build...'<br />
+
+      and enter exec:java as the goal<br />
+
+      This runs your new program<br />
+</p>
+<p><img src="../images/archetype4.jpg" alt="Archetype" /></p>
+<p>You should see output similar to this:</p>
+<p><img src="../images/archetype5.jpg" alt="Archetype" /></p>
+<p>What this program just did was to build an opentravel message, convert it to xml,
+	then convert it back to a java object and retrieve the data. Nice!<br />
+
+	Take a look at your source code. It's pretty simple. It's pretty clean.</p>
+<p>You may have to sync maven by right clicking your project and select maven -&gt; update project configurations,
+	then maven -&gt; update dependencies. Now right-click and select maven -&gt; download sources, then maven -&gt; download javadocs.</p>
+<p>Now the cool part. Open your source code (App.java).<br />
+
+	Place a breakpoint at line 69 <code>(ping.setEchoData(&quot;Hello World!&quot;);)</code><br />
+
+	and right click App.java in the left nav bar and select Debug as -&gt; Java Application.<br />
+
+	When it stops, step into the setEchoData method and voila, you see the source for the
+	java class that represents the xml item, with comments straight from the schema. <b>Very Cool!</b></p>
+<p><img src="../images/archetype6.jpg" alt="Archetype" /></p>
+<p>Now that was pretty painless, huh?</p>
+<p>Note: As you may have noticed, this is a sub-project of the
+      <a href="http://jibx.sourceforge.net/jibxota" class="externalLink">JiBX/OTA</a> open-source project.
+      Hey, this is open source. We're going to point you to the best tools for the job!</p>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          jibx.org
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

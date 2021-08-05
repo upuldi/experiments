@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="CSEListedCompany" table="CSE_LISTED_COMPANIES">
+
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="companyName" column="NAME" />
+		<property name="stockCode" column="TICKER" />
+
+	</class>
+
+</hibernate-mapping>

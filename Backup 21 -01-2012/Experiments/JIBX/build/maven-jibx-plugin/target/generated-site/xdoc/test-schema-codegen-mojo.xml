@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>jibx:test-schema-codegen</title>
+  </properties>
+  <body>
+    <section name="jibx:test-schema-codegen">
+      <p><strong>Full name</strong>:</p>
+      <p>org.jibx:maven-jibx-plugin:1.2.2:test-schema-codegen</p>
+      <p><strong>Description</strong>:</p>
+      <div>Generates Java test sources from XSD schemas.</div>
+      <p><strong>Attributes</strong>:</p>
+      <ul>
+        <li>Requires a Maven 2.0 project to be executed.</li>
+        <li>Requires dependency resolution of artifacts in scope: <code>test-compile</code>.</li>
+        <li>Binds by default to the lifecycle phase: <code>generate-test-sources</code>.</li>
+      </ul>
+      <subsection name="Required Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#directory">directory</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>The directory which contains XSD files.<br/><strong>Default value is</strong>: <code>${basedir}/src/test/config</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#verbose">verbose</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag for verbose processing reports.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Optional Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#customizations">customizations</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Include pattern for customization files.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#defaultNamespace">defaultNamespace</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>Namespace applied in code generation when no-namespaced schema
+definitions are found (to generate no-namespaced schemas as though
+they were included in a particular namespace)<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#defaultPackage">defaultPackage</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>Default package for code generated from schema definitions with no
+namespace.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#excludes">excludes</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Exclude pattern for binding files.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#includeBindings">includeBindings</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Include existing bindings and use mappings from the bindings for
+matching schema global definitions. (this is the basis for modular
+code generation) Include base bindings as follows:<br />
+&lt;includeBindings&gt;<br />
+&lt;includeBinding&gt;base-binding.xml&lt;/includeBinding&gt;<br />
+&lt;/includeBindings&gt;<br />
+<b>Note:</b> Relative paths start at ${basedir}.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#includes">includes</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Include pattern for schema files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a
+href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> *.xsd.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#options">options</a></strong></td>
+            <td><code>Map</code></td>
+            <td><code>-</code></td>
+            <td>Extra options to be given for customization via CLI.
+
+<p />Enter extra customizations or other command-line
+options.<br />
+The extra customizations are described on the <a
+href="/fromschema/codegen-customs.html">CodeGen customizations
+page</a><br />
+The single character CodeGen commands may also be supplied
+here.<br />
+For example, to include a base binding file (-i) and prefer-inline
+code, supply the following options:<br />
+<code>&lt;options&gt;<br />
+  &lt;i&gt;base-binding.xml&lt;/i&gt;<br />
+  &lt;prefer-inline&gt;true&lt;/prefer-inline&gt;<br />
+&lt;/options&gt;</code><br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#targetDirectory">targetDirectory</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>Target directory where to generate Java source files.<br/><strong>Default value is</strong>: <code>${basedir}/target/generated-test-sources</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Parameter Details">
+        <p><strong><a name="customizations">customizations</a>:</strong></p>
+        <div>Include pattern for customization files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${customizations}</code></li>
+        </ul><hr/><p><strong><a name="defaultNamespace">defaultNamespace</a>:</strong></p>
+        <div>Namespace applied in code generation when no-namespaced schema
+definitions are found (to generate no-namespaced schemas as though
+they were included in a particular namespace)</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+        </ul><hr/><p><strong><a name="defaultPackage">defaultPackage</a>:</strong></p>
+        <div>Default package for code generated from schema definitions with no
+namespace.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+        </ul><hr/><p><strong><a name="directory">directory</a>:</strong></p>
+        <div>The directory which contains XSD files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${directory}</code></li>
+          <li><strong>Default</strong>: <code>${basedir}/src/test/config</code></li>
+        </ul><hr/><p><strong><a name="excludes">excludes</a>:</strong></p>
+        <div>Exclude pattern for binding files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${excludes}</code></li>
+        </ul><hr/><p><strong><a name="includeBindings">includeBindings</a>:</strong></p>
+        <div>Include existing bindings and use mappings from the bindings for
+matching schema global definitions. (this is the basis for modular
+code generation) Include base bindings as follows:<br />
+&lt;includeBindings&gt;<br />
+&lt;includeBinding&gt;base-binding.xml&lt;/includeBinding&gt;<br />
+&lt;/includeBindings&gt;<br />
+<b>Note:</b> Relative paths start at ${basedir}.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${includeBindings}</code></li>
+        </ul><hr/><p><strong><a name="includes">includes</a>:</strong></p>
+        <div>Include pattern for schema files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a
+href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> *.xsd.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${includes}</code></li>
+        </ul><hr/><p><strong><a name="options">options</a>:</strong></p>
+        <div>Extra options to be given for customization via CLI.
+
+<p />Enter extra customizations or other command-line
+options.<br />
+The extra customizations are described on the <a
+href="/fromschema/codegen-customs.html">CodeGen customizations
+page</a><br />
+The single character CodeGen commands may also be supplied
+here.<br />
+For example, to include a base binding file (-i) and prefer-inline
+code, supply the following options:<br />
+<code>&lt;options&gt;<br />
+  &lt;i&gt;base-binding.xml&lt;/i&gt;<br />
+  &lt;prefer-inline&gt;true&lt;/prefer-inline&gt;<br />
+&lt;/options&gt;</code></div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.Map</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+        </ul><hr/><p><strong><a name="targetDirectory">targetDirectory</a>:</strong></p>
+        <div>Target directory where to generate Java source files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${targetDirectory}</code></li>
+          <li><strong>Default</strong>: <code>${basedir}/target/generated-test-sources</code></li>
+        </ul><hr/><p><strong><a name="verbose">verbose</a>:</strong></p>
+        <div>Control flag for verbose processing reports.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${verbose}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>

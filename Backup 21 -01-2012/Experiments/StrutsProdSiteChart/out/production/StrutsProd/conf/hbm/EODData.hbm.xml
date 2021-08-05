@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="EODData" table="EOD_DATA">
+
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="ticker" column="TICKER" />
+		<property name="date" column="DATE" />
+		<property name="trade" column="TRADE" />
+		<property name="open" column="OPEN" />
+		<property name="high" column="HIGH" />
+		<property name="low" column="LOW" />
+		<property name="close" column="CLOSE" />
+		<property name="vol" column="VOL" />
+        <property name="change" column="VAL_CHANGE" />
+        <property name="changePresentage" column="CHANGE_PRESENTAGE" />
+
+
+	</class>
+
+    <query name="getEODCountersForTheDay"> from EODData where date = :date </query>
+    <query name="getEODDataForStock"> from EODData where date = :date and ticker = :ticker </query>
+
+
+</hibernate-mapping>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_cse_rt" default="compile.module.cse_rt">
+  <dirname property="module.cse_rt.basedir" file="${ant.file.module_cse_rt}"/>
+  
+  <property name="module.jdk.home.cse_rt" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.cse_rt" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.cse_rt" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.cse_rt" value="${compiler.args}"/>
+  
+  <property name="cse_rt.output.dir" value="${module.cse_rt.basedir}/out/production/CSE_RT"/>
+  <property name="cse_rt.testoutput.dir" value="${module.cse_rt.basedir}/out/test/CSE_RT"/>
+  
+  <path id="cse_rt.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="cse_rt.module.classpath">
+    <path refid="${module.jdk.classpath.cse_rt}"/>
+    <path refid="library.hibernate3.classpath"/>
+    <pathelement location="C:/Program Files/JetBrains/IntelliJ IDEA 8.0/lib/javaee.jar"/>
+    <path refid="library.struts2-2.0.12.classpath"/>
+    <path refid="library.spring-2.5.5.classpath"/>
+  </path>
+  
+  <path id="cse_rt.runtime.module.classpath">
+    <pathelement location="${cse_rt.output.dir}"/>
+    <pathelement location="${cse_rt.testoutput.dir}"/>
+    <path refid="library.hibernate3.classpath"/>
+    <pathelement location="C:/Program Files/JetBrains/IntelliJ IDEA 8.0/lib/javaee.jar"/>
+    <path refid="library.struts2-2.0.12.classpath"/>
+    <path refid="library.spring-2.5.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.cse_rt">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.cse_rt">
+    <patternset refid="excluded.from.module.cse_rt"/>
+  </patternset>
+  
+  <path id="cse_rt.module.sourcepath">
+    <dirset dir="${module.cse_rt.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.cse_rt" depends="compile.module.cse_rt.production,compile.module.cse_rt.tests" description="Compile module CSE_RT"/>
+  
+  <target name="compile.module.cse_rt.production" description="Compile module CSE_RT; production classes">
+    <mkdir dir="${cse_rt.output.dir}"/>
+    <javac2 destdir="${cse_rt.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.cse_rt}/javac">
+      <compilerarg line="${compiler.args.cse_rt}"/>
+      <bootclasspath refid="cse_rt.module.bootclasspath"/>
+      <classpath refid="cse_rt.module.classpath"/>
+      <src refid="cse_rt.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.cse_rt"/>
+    </javac2>
+    
+    <copy todir="${cse_rt.output.dir}">
+      <fileset dir="${module.cse_rt.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.cse_rt.tests" depends="compile.module.cse_rt.production" description="compile module CSE_RT; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.cse_rt" description="cleanup module">
+    <delete dir="${cse_rt.output.dir}"/>
+    <delete dir="${cse_rt.testoutput.dir}"/>
+  </target>
+  
+  <property name="cse_rtweb.dir.exploded" value="${module.cse_rt.basedir}/out/exploded/CSE_RTWeb"/>
+  <target name="j2ee.build.cse_rtweb" depends="compile.module.cse_rt" description="Build configured Java EE directories and archives for facet &apos;Web&apos;">
+    <antcall target="j2ee.build.exploded.cse_rtweb">
+      <param name="j2ee.dir.exploded" value="${cse_rtweb.dir.exploded}"/>
+    </antcall>
+  </target>
+  
+  <!-- Call the target to build exploded directory for facet 'Web'.
+       Path to the exploded directory is specified by parameter 'j2ee.dir.exploded' -->
+  <target name="j2ee.build.exploded.cse_rtweb" description="Build exploded directory for facet &apos;Web&apos;">
+    <copy file="${module.cse_rt.basedir}/web/WEB-INF/web.xml" tofile="${j2ee.dir.exploded}/WEB-INF/web.xml"/>
+    <copy file="${module.cse_rt.basedir}/lib/spring-webmvc.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/spring-webmvc.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/commons-logging_1.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/commons-logging_1.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/spring.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/spring.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/ognl.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/ognl.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/xwork.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/xwork.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/freemarker.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/freemarker.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/struts2-core.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/struts2-core.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/commons-logging.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/commons-logging.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/antlr.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/antlr.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/dom4j.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/dom4j.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/cglib.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/cglib.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/asm.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/asm.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/commons-collections.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/commons-collections.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/hibernate-annotations.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/hibernate-annotations.jar"/>
+    <copy file="${module.cse_rt.basedir}/lib/hibernate.jar" tofile="${j2ee.dir.exploded}/WEB-INF/lib/hibernate.jar"/>
+    <copy todir="${j2ee.dir.exploded}/WEB-INF/classes">
+      <fileset dir="${module.cse_rt.basedir}/out/production/CSE_RT"/>
+    </copy>
+    <copy todir="${j2ee.dir.exploded}/">
+      <fileset dir="${module.cse_rt.basedir}/web"/>
+    </copy>
+  </target>
+  
+  <!-- Call the target to build war archive for facet 'Web'.
+       Path to the archive file is specified by parameter 'j2ee.path.jar' -->
+  <target name="j2ee.build.jar.cse_rtweb" description="Build Java EE archive for facet &apos;Web&apos;">
+    <dirname property="jar.dir" file="${j2ee.path.jar}"/>
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${j2ee.path.jar}" duplicate="preserve">
+      <manifest>
+        <attribute name="Created-By" value="IntelliJ IDEA"/>
+        <attribute name="Manifest-Version" value="1.0"/>
+      </manifest>
+      <zipfileset dir="${module.cse_rt.basedir}/web" prefix=""/>
+      <zipfileset dir="${module.cse_rt.basedir}/out/production/CSE_RT" prefix="WEB-INF/classes"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/hibernate.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/hibernate-annotations.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/commons-collections.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/asm.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/cglib.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/dom4j.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/antlr.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/commons-logging.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/struts2-core.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/freemarker.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/xwork.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/ognl.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/spring.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/commons-logging_1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/lib/spring-webmvc.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${module.cse_rt.basedir}/web/WEB-INF/web.xml" prefix="WEB-INF"/>
+    </jar>
+  </target>
+</project>

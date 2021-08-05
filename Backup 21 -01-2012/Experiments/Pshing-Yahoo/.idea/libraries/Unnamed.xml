@@ -1,0 +1,46 @@
+<component name="libraryTable">
+  <library name="Unnamed">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/war/WEB-INF/lib" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/jdbc2_0-stdext.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-coyote.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina-ant-jmx.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/servlets-default.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina-optional.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina-storeconfig.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina-ant.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-apr.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/servlets-invoker.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/jdbc10201_jdk14.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-ajp.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/ojdbc14-10.2.0.2.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/commons-modeler-2.0.1.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/servlets-webdav.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/catalina-cluster.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-http.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-util.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/server/lib/tomcat-jkstatus-ant.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/commons-el.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/naming-factory-dbcp.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/naming-factory.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/log4j-1.2.15.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/mysql-connector-java-5.1.6-bin.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/servlet-api.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/sqljdbc.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/naming-resources.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/ojdbc14-10.2.0.2.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jasper-compiler-jdt.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jasper-compiler.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/el-api-1.0.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jdbc2_0-stdext.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jsp-api.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jasper-runtime.jar!/" />
+      <root url="jar:///usr/local/production-site/apache-tomcat-5.5.28/common/lib/jdbc10201_jdk14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/war/WEB-INF/lib" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rt_cse" default="all">
+  
+  
+  <property file="rt_cse.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- The task requires the following libraries from IntelliJ IDEA distribution: -->
+  <!--   javac2.jar; jdom.jar; asm.jar; asm-commons.jar -->
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2"/>
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.sbas/**"/>
+    <exclude name="**/.IJI.*/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.hibernate3.classpath">
+    <pathelement location="${basedir}/lib/antlr.jar"/>
+    <pathelement location="${basedir}/lib/asm.jar"/>
+    <pathelement location="${basedir}/lib/cglib.jar"/>
+    <pathelement location="${basedir}/lib/commons-collections.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging.jar"/>
+    <pathelement location="${basedir}/lib/dom4j.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-annotations.jar"/>
+    <pathelement location="${basedir}/lib/hibernate.jar"/>
+  </path>
+  
+  <path id="library.spring-2.5.5.classpath">
+    <pathelement location="${basedir}/lib/commons-logging_1.jar"/>
+    <pathelement location="${basedir}/lib/spring-webmvc.jar"/>
+    <pathelement location="${basedir}/lib/spring.jar"/>
+  </path>
+  
+  <path id="library.struts2-2.0.12.classpath">
+    <pathelement location="${basedir}/lib/commons-logging.jar"/>
+    <pathelement location="${basedir}/lib/freemarker.jar"/>
+    <pathelement location="${basedir}/lib/ognl.jar"/>
+    <pathelement location="${basedir}/lib/struts2-core.jar"/>
+    <pathelement location="${basedir}/lib/xwork.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_cse_rt.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.cse_rt" description="cleanup all"/>
+  
+  <target name="all" depends="init, clean, j2ee.build.cse_rtweb" description="build all"/>
+</project>

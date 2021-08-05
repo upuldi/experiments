@@ -1,0 +1,57 @@
+package com.domain;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: udoluweera
+ * Date: 6/25/11
+ * Time: 5:32 PM
+ * To change this template use File | Settings | File Templates.
+ */
+public class RubberPrice {
+
+    private long id;
+    private String item;
+    private String priceLKR;
+    private String priceUSD;
+    private String date;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getPriceLKR() {
+        return priceLKR;
+    }
+
+    public void setPriceLKR(String priceLKR) {
+        this.priceLKR = priceLKR;
+    }
+
+    public String getPriceUSD() {
+        return priceUSD;
+    }
+
+    public void setPriceUSD(String priceUSD) {
+        this.priceUSD = priceUSD;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+}

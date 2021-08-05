@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="Ethanol" default="compile" basedir=".">
+
+    <import file="properties.xml"/>
+
+    <path id="project.class.path">
+        <pathelement location="${proj.webapp.dir}/WEB-INF/classes"/>
+		<fileset dir="${proj.ext-lib.dir}" includes="*.jar" />
+		<fileset dir="${proj.webapp.dir}/WEB-INF/lib" includes="*.jar" />
+    </path>
+
+    <target name="clean" description="Clean this project">
+        <echo message="############################################################"/>
+        <echo message="#                  Cleaning this project                   #"/>
+        <echo message="############################################################"/>
+
+        <delete dir="${proj.webapp.dir}/WEB-INF/classes" failonerror="false"/>
+        <delete dir="${proj.tomcat.home}/webapps/${proj.webapp.name}" failonerror="false"/>
+        <delete dir="${proj.dist.dir}" failonerror="false"/>
+    </target>
+
+    <target name="javac" description="Compile java source">
+        <mkdir dir="${proj.webapp.dir}/WEB-INF/classes"/>
+
+        <javac srcdir="${proj.java.dir}" destdir="${proj.webapp.dir}/WEB-INF/classes" includes="**" encoding="utf-8"
+               debug="true">
+            <classpath refid="project.class.path"/>
+        </javac>
+        <copy todir="${proj.webapp.dir}/WEB-INF/classes">
+            <fileset dir="${proj.java.dir}"/>
+        </copy>
+    </target>
+
+    <target name="apply-env" description="Apply env properties into build process" if="proj.env">
+        <echo message="############################################################"/>
+        <echo message="#           Applying ENV ${proj.env} propertis             #"/>
+        <echo message="############################################################"/>
+
+        <copy file="${proj.res.dir}/env/${proj.env}/system.properties"
+              tofile="${proj.webapp.dir}/WEB-INF/classes/system.properties"
+              overwrite="true" failonerror="true"/>
+
+        <copy file="${proj.res.dir}/env/${proj.env}/context.xml"
+              tofile="${proj.webapp.dir}/META-INF/context.xml"
+              overwrite="true" failonerror="true"/>
+
+        <copy file="${proj.res.dir}/env/${proj.env}/Ethanol.gwt.xml"
+              tofile="${proj.webapp.dir}/WEB-INF/classes/shipxpress/ethanol/Ethanol.gwt.xml"
+              overwrite="true" failonerror="true"/>
+    </target>
+
+    <target name="compile" depends="javac,apply-env" description="Compiling this project">
+        <echo message="############################################################"/>
+        <echo message="#                 Compiling this project                   #"/>
+        <echo message="############################################################"/>
+
+    </target>
+
+    <target name="war" description="Packaging this project">
+        <echo message="############################################################"/>
+        <echo message="#                 Packaging this project                   #"/>
+        <echo message="############################################################"/>
+
+        <mkdir dir="${proj.dist.dir}/${proj.webapp.name}"/>
+
+        <copy todir="${proj.dist.dir}/${proj.webapp.name}">
+            <fileset dir="${proj.webapp.dir}" excludes="**/*.java"/>
+        </copy>
+
+    </target>
+
+    <target name="deploy-tomcat" description="Deploys on Tomcat">
+        <echo message="##############################################################"/>
+        <echo message="#                      Deploys on Tomcat                     #"/>
+        <echo message="##############################################################"/>
+
+        <mkdir dir="${proj.tomcat.home}/webapps/${proj.webapp.name}"/>
+
+        <copy todir="${proj.tomcat.home}/webapps/${proj.webapp.name}" overwrite="true">
+            <fileset dir="${proj.dist.dir}/${proj.webapp.name}"/>
+        </copy>
+    </target>
+
+    <target name="Stop-tomcat" description="Deploys on Tomcat">
+        <echo message="STOP Tomcat"/>
+        <java jar="${proj.tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${proj.tomcat.home}"/>
+            <arg line="stop"/>
+        </java>
+    </target>
+
+    <target name="start-tomcat">
+
+        <echo message="Start Tomcat in Debug mode"/>
+
+        <java jar="${proj.tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${proj.tomcat.home}"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=5555,server=y,suspend=n"/>
+        </java>
+    </target>
+
+    <target name="clean-deploy">
+
+        <echo message="CLEAN DEPLOY"/>
+
+        <antcall target="Stop-tomcat"/>
+        <antcall target="clean"/>
+        <antcall target="javac"/>
+        <antcall target="war"/>
+        <antcall target="deploy-tomcat"/>
+        <antcall target="buildWar"/>
+        <antcall target="start-tomcat"/>
+
+    </target>
+
+    <!-- Create the War File -->
+	<target name="buildWar" depends="deploy-tomcat">
+
+        <delete dir="${basedir}/dist-war" failonerror="false"/>
+        <mkdir dir="${basedir}/dist-war"/>
+
+            <!-- Create war file and place in ear directory -->
+		<jar jarfile="${basedir}/dist-war/${warFileName}.war" basedir="${proj.dist.dir}/${proj.webapp.name}" />
+
+
+	</target>
+
+
+
+
+</project>
+

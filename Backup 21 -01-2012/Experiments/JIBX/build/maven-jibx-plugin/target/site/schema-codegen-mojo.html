@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>JiBX - jibx:schema-codegen</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            maven-jibx-plugin
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-10
+                      </div>
+            <div class="xright">            <a href="../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Configuration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="modes.html">Execution Modes</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="basic.html">Basic Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="advanced.html">Advanced Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="schema-codegen.html">Generate Java Sources from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="modular-codegen.html">Generate Modular Code from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="testing.html">Test Case Usage</a>
+          </li>
+              
+    <li class="none">
+                    <a href="compare.html">XML Document comparison</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+                    <a href="project-reports.html">Project Reports</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="jibx:schema-codegen"></a>jibx:schema-codegen</h2>
+<p><strong>Full name</strong>:</p>
+<p>org.jibx:maven-jibx-plugin:1.2.2:schema-codegen</p>
+<p><strong>Description</strong>:</p>
+<div>Generates Java sources from XSD schemas.</div><p><strong>Attributes</strong>:</p>
+<ul><li>Requires a Maven 2.0 project to be executed.</li>
+<li>Requires dependency resolution of artifacts in scope: <code>compile</code>.</li>
+<li>Binds by default to the lifecycle phase: <code>generate-sources</code>.</li>
+</ul>
+<div class="section"><h3><a name="Required_Parameters"></a>Required Parameters</h3>
+<table class="bodyTable"><tr class="a"><th>Name</th>
+<th>Type</th>
+<th>Since</th>
+<th>Description</th>
+</tr>
+<tr class="b"><td><strong><a href="#directory">directory</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>The directory which contains XSD files.<br />
+<strong>Default value is</strong>: <code>${basedir}/src/main/config</code>.</td>
+</tr>
+<tr class="a"><td><strong><a href="#verbose">verbose</a></strong></td>
+<td><code>boolean</code></td>
+<td><code>-</code></td>
+<td>Control flag for verbose processing reports.<br />
+<strong>Default value is</strong>: <code>false</code>.</td>
+</tr>
+</table>
+</div>
+<div class="section"><h3><a name="Optional_Parameters"></a>Optional Parameters</h3>
+<table class="bodyTable"><tr class="b"><th>Name</th>
+<th>Type</th>
+<th>Since</th>
+<th>Description</th>
+</tr>
+<tr class="a"><td><strong><a href="#customizations">customizations</a></strong></td>
+<td><code>ArrayList</code></td>
+<td><code>-</code></td>
+<td>Include pattern for customization files.<br />
+</td>
+</tr>
+<tr class="b"><td><strong><a href="#defaultNamespace">defaultNamespace</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>Namespace applied in code generation when no-namespaced schema
+definitions are found (to generate no-namespaced schemas as though
+they were included in a particular namespace)<br />
+</td>
+</tr>
+<tr class="a"><td><strong><a href="#defaultPackage">defaultPackage</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>Default package for code generated from schema definitions with no
+namespace.<br />
+</td>
+</tr>
+<tr class="b"><td><strong><a href="#excludes">excludes</a></strong></td>
+<td><code>ArrayList</code></td>
+<td><code>-</code></td>
+<td>Exclude pattern for binding files.<br />
+</td>
+</tr>
+<tr class="a"><td><strong><a href="#includeBindings">includeBindings</a></strong></td>
+<td><code>ArrayList</code></td>
+<td><code>-</code></td>
+<td>Include existing bindings and use mappings from the bindings for
+matching schema global definitions. (this is the basis for modular
+code generation) Include base bindings as follows:<br />
+
+&lt;includeBindings&gt;<br />
+
+&lt;includeBinding&gt;base-binding.xml&lt;/includeBinding&gt;<br />
+
+&lt;/includeBindings&gt;<br />
+<b>Note:</b> Relative paths start at ${basedir}.<br />
+</td>
+</tr>
+<tr class="b"><td><strong><a href="#includes">includes</a></strong></td>
+<td><code>ArrayList</code></td>
+<td><code>-</code></td>
+<td>Include pattern for schema files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a class="externalLink" href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> *.xsd.<br />
+</td>
+</tr>
+<tr class="a"><td><strong><a href="#options">options</a></strong></td>
+<td><code>Map</code></td>
+<td><code>-</code></td>
+<td>Extra options to be given for customization via CLI.
+
+<p></p>
+Enter extra customizations or other command-line
+options.<br />
+
+The extra customizations are described on the <a href="/fromschema/codegen-customs.html">CodeGen customizations
+page</a><br />
+
+The single character CodeGen commands may also be supplied
+here.<br />
+
+For example, to include a base binding file (-i) and prefer-inline
+code, supply the following options:<br />
+<code>&lt;options&gt;<br />
+
+  &lt;i&gt;base-binding.xml&lt;/i&gt;<br />
+
+  &lt;prefer-inline&gt;true&lt;/prefer-inline&gt;<br />
+
+&lt;/options&gt;</code><br />
+</td>
+</tr>
+<tr class="b"><td><strong><a href="#targetDirectory">targetDirectory</a></strong></td>
+<td><code>String</code></td>
+<td><code>-</code></td>
+<td>Target directory where to generate Java source files.<br />
+<strong>Default value is</strong>: <code>${basedir}/target/generated-sources</code>.</td>
+</tr>
+</table>
+</div>
+<div class="section"><h3><a name="Parameter_Details"></a>Parameter Details</h3>
+<p><strong><a name="customizations">customizations</a>:</strong></p>
+<div>Include pattern for customization files.</div><ul><li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${customizations}</code></li>
+</ul>
+<hr />
+<p><strong><a name="defaultNamespace">defaultNamespace</a>:</strong></p>
+<div>Namespace applied in code generation when no-namespaced schema
+definitions are found (to generate no-namespaced schemas as though
+they were included in a particular namespace)</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+</ul>
+<hr />
+<p><strong><a name="defaultPackage">defaultPackage</a>:</strong></p>
+<div>Default package for code generated from schema definitions with no
+namespace.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+</ul>
+<hr />
+<p><strong><a name="directory">directory</a>:</strong></p>
+<div>The directory which contains XSD files.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>Yes</code></li>
+<li><strong>Expression</strong>: <code>${directory}</code></li>
+<li><strong>Default</strong>: <code>${basedir}/src/main/config</code></li>
+</ul>
+<hr />
+<p><strong><a name="excludes">excludes</a>:</strong></p>
+<div>Exclude pattern for binding files.</div><ul><li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${excludes}</code></li>
+</ul>
+<hr />
+<p><strong><a name="includeBindings">includeBindings</a>:</strong></p>
+<div>Include existing bindings and use mappings from the bindings for
+matching schema global definitions. (this is the basis for modular
+code generation) Include base bindings as follows:<br />
+
+&lt;includeBindings&gt;<br />
+
+&lt;includeBinding&gt;base-binding.xml&lt;/includeBinding&gt;<br />
+
+&lt;/includeBindings&gt;<br />
+<b>Note:</b> Relative paths start at ${basedir}.</div><ul><li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${includeBindings}</code></li>
+</ul>
+<hr />
+<p><strong><a name="includes">includes</a>:</strong></p>
+<div>Include pattern for schema files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a class="externalLink" href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> *.xsd.</div><ul><li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${includes}</code></li>
+</ul>
+<hr />
+<p><strong><a name="options">options</a>:</strong></p>
+<div>Extra options to be given for customization via CLI.
+
+<p></p>
+Enter extra customizations or other command-line
+options.<br />
+
+The extra customizations are described on the <a href="/fromschema/codegen-customs.html">CodeGen customizations
+page</a><br />
+
+The single character CodeGen commands may also be supplied
+here.<br />
+
+For example, to include a base binding file (-i) and prefer-inline
+code, supply the following options:<br />
+<code>&lt;options&gt;<br />
+
+  &lt;i&gt;base-binding.xml&lt;/i&gt;<br />
+
+  &lt;prefer-inline&gt;true&lt;/prefer-inline&gt;<br />
+
+&lt;/options&gt;</code></div><ul><li><strong>Type</strong>: <code>java.util.Map</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+</ul>
+<hr />
+<p><strong><a name="targetDirectory">targetDirectory</a>:</strong></p>
+<div>Target directory where to generate Java source files.</div><ul><li><strong>Type</strong>: <code>java.lang.String</code></li>
+<li><strong>Required</strong>: <code>No</code></li>
+<li><strong>Expression</strong>: <code>${targetDirectory}</code></li>
+<li><strong>Default</strong>: <code>${basedir}/target/generated-sources</code></li>
+</ul>
+<hr />
+<p><strong><a name="verbose">verbose</a>:</strong></p>
+<div>Control flag for verbose processing reports.</div><ul><li><strong>Type</strong>: <code>boolean</code></li>
+<li><strong>Required</strong>: <code>Yes</code></li>
+<li><strong>Expression</strong>: <code>${verbose}</code></li>
+<li><strong>Default</strong>: <code>false</code></li>
+</ul>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          JiBX Project
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

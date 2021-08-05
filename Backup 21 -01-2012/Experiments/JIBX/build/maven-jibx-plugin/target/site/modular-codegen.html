@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>JiBX - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            maven-jibx-plugin
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-10
+                      </div>
+            <div class="xright">            <a href="../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Configuration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="modes.html">Execution Modes</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="basic.html">Basic Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="advanced.html">Advanced Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="schema-codegen.html">Generate Java Sources from Schemas</a>
+          </li>
+              
+    <li class="none">
+              <strong>Generate Modular Code from Schemas</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="testing.html">Test Case Usage</a>
+          </li>
+              
+    <li class="none">
+                    <a href="compare.html">XML Document comparison</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+              
+        <li class="collapsed">
+                    <a href="project-reports.html">Project Reports</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Generate Modular Code from Schemas</h2>
+<div class="section"><h3>If your XSD Schema lends itself to modularization, the JiBX code generator offers the most flexible code generation that you will find.</h3>
+<p>Since JiBX allows generation of code into different java packages, JiBX is the best choice if you want to split a large schema into smaller OSGi modules.</p>
+<p>The following samples are taken from the <a href="../jibxota/jibxotaosgi.html">jibx-ota-osgi sub-project</a>. This project breaks the travel industry's <a class="externalLink" href="http://www.opentravel.org">opentravel</a> schema is modules based on industry segment. Each module is a maven project as well as an osgi module. This insures the correct modules are includes in a project and only the needed modules will be loaded at runtime.</p>
+<p>This is a sample pom.xml file from the base module:</p>
+<div class="source"><pre>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;
+  &lt;artifactId&gt;jibx-ota-osgi-base&lt;/artifactId&gt;
+  &lt;version&gt;1.2.2&lt;/version&gt;
+  &lt;packaging&gt;bundle&lt;/packaging&gt;
+  &lt;name&gt;jibx-ota-osgi-base (opentravel OSGI base bundle)&lt;/name&gt;
+
+  &lt;build&gt;
+    &lt;!-- To use the plugin goals in your POM or parent POM --&gt;
+    &lt;plugins&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.2.2&lt;/version&gt;
+        
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;generate-java-code-from-schema&lt;/id&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;schema-codegen&lt;/goal&gt;
+            &lt;/goals&gt;
+                &lt;configuration&gt;
+                        &lt;directory&gt;${schemaDirectory}&lt;/directory&gt;
+                    &lt;customizations&gt;
+                        &lt;customization&gt;${basedir}/custom-modular-base.xml&lt;/customization&gt;
+                    &lt;/customizations&gt;
+                    &lt;includes&gt;
+                        &lt;include&gt;OTA_Common*.xsd&lt;/include&gt;
+                        &lt;include&gt;OTA_SimpleTypes.xsd&lt;/include&gt;
+                    &lt;/includes&gt;
+                &lt;defaultNamespace&gt;http://www.opentravel.org/OTA/2003/05&lt;/defaultNamespace&gt;
+                &lt;/configuration&gt;
+          &lt;/execution&gt;
+                &lt;execution&gt;
+                    &lt;id&gt;compile-binding&lt;/id&gt;
+                    &lt;goals&gt;
+                        &lt;goal&gt;bind&lt;/goal&gt;
+                    &lt;/goals&gt;
+                    &lt;configuration&gt;
+                        &lt;directory&gt;target/generated-sources&lt;/directory&gt;
+                        &lt;includes&gt;
+                          &lt;include&gt;base-binding.xml&lt;/include&gt;
+                        &lt;/includes&gt;
+                    &lt;/configuration&gt;
+                &lt;/execution&gt;
+        &lt;/executions&gt;
+          &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.felix&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-bundle-plugin&lt;/artifactId&gt;
+        &lt;extensions&gt;true&lt;/extensions&gt;
+        &lt;configuration&gt;
+          &lt;instructions&gt;
+            &lt;Export-Package&gt;org.jibx.ota.base.*&lt;/Export-Package&gt;
+            &lt;Import-Package&gt;org.jibx.ota.*,
+                *;resolution:=optional&lt;/Import-Package&gt;
+            &lt;!-- Even though it is not necessary to include the binding files in the module, it is a good practice so any extension modules can find this resource --&gt;
+            &lt;Include-Resource&gt;META-INF/base-binding.xml=${basedir}/target/generated-sources/base-binding.xml&lt;/Include-Resource&gt;
+          &lt;/instructions&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+ 
+  &lt;dependencies&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-run&lt;/artifactId&gt;
+          &lt;version&gt;1.2.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-extras&lt;/artifactId&gt;
+          &lt;version&gt;1.2.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;joda-time&lt;/groupId&gt;
+          &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+          &lt;version&gt;1.6&lt;/version&gt;
+        &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+
+&lt;/project&gt;</pre>
+</div>
+</div>
+<div class="section"><h3>JiBX Module using the base module in the previous example.</h3>
+<p>Here is the sample:</p>
+<div class="source"><pre>&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;
+  &lt;artifactId&gt;jibx-ota-osgi-air&lt;/artifactId&gt;
+  &lt;version&gt;1.2.3&lt;/version&gt;
+  &lt;packaging&gt;bundle&lt;/packaging&gt;
+
+  &lt;name&gt;jibx-ota-osgi-air (opentravel OSGI air bundle)&lt;/name&gt;
+
+  &lt;build&gt;
+    &lt;!-- This is a standard configuration, move it up --&gt;
+    &lt;plugins&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.2.2&lt;/version&gt;
+
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;generate-java-code-from-schema&lt;/id&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;schema-codegen&lt;/goal&gt;
+            &lt;/goals&gt;
+                &lt;configuration&gt;
+                        &lt;directory&gt;${schemaDirectory}&lt;/directory&gt;
+                    &lt;customizations&gt;
+                        &lt;customization&gt;${basedir}/custom-modular-air.xml&lt;/customization&gt;
+                    &lt;/customizations&gt;
+                    &lt;includes&gt;
+                        &lt;include&gt;OTA_Air*RS.xsd&lt;/include&gt;
+                        &lt;include&gt;OTA_Air*RQ.xsd&lt;/include&gt;
+                    &lt;/includes&gt;
+                &lt;includeBindings&gt;
+                  &lt;includeBinding&gt;${basedir}/../jibx-ota-osgi-base/target/generated-sources/base-binding.xml&lt;/includeBinding&gt;
+                &lt;/includeBindings&gt;
+                &lt;/configuration&gt;
+          &lt;/execution&gt;
+          &lt;execution&gt;
+              &lt;id&gt;compile-binding&lt;/id&gt;
+              &lt;goals&gt;
+                  &lt;goal&gt;bind&lt;/goal&gt;
+              &lt;/goals&gt;
+              &lt;configuration&gt;
+                  &lt;directory&gt;target/generated-sources&lt;/directory&gt;
+                  &lt;includes&gt;
+                    &lt;include&gt;air-binding.xml&lt;/include&gt;
+                  &lt;/includes&gt;
+              &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+          &lt;/plugin&gt;
+
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.felix&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-bundle-plugin&lt;/artifactId&gt;
+        &lt;extensions&gt;true&lt;/extensions&gt;
+        &lt;configuration&gt;
+          &lt;instructions&gt;
+            &lt;Export-Package&gt;org.jibx.ota.air.*&lt;/Export-Package&gt;
+            &lt;Import-Package&gt;org.jibx.ota.*,
+                *;resolution:=optional&lt;/Import-Package&gt;
+            &lt;!-- Even though it is not necessary to include the binding files in the module, it is a good practice so any extension modules can find this resource --&gt;
+            &lt;Include-Resource&gt;META-INF/air-binding.xml=${basedir}/target/generated-sources/base-binding.xml&lt;/Include-Resource&gt;
+          &lt;/instructions&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+ 
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;
+      &lt;artifactId&gt;jibx-ota-osgi-base&lt;/artifactId&gt;
+      &lt;version&gt;1.2.2&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+
+&lt;/project&gt;</pre>
+</div>
+<p>Note: This module includes the base module as a dependency AND the schema-codegen goal points to the base binding file.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          JiBX Project
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

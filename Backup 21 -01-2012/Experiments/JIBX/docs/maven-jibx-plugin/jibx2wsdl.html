@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JiBX - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            maven-jibx-plugin
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-09
+                      </div>
+            <div class="xright">            <a href="../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Configuration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="modes.html">Execution Modes</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="basic.html">Basic Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="advanced.html">Advanced Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="schema-codegen.html">Generate Java Sources from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="modular-codegen.html">Generate Modular Code from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="testing.html">Test Case Usage</a>
+          </li>
+              
+    <li class="none">
+                    <a href="compare.html">XML Document comparison</a>
+          </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Generate WSDL from Java classes.</h2>
+<div class="section"><h3>WSDL from Java classes</h3>
+<p>Here is a sample plugin section:</p>
+<div class="source"><pre>      &lt;plugin&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;executions&gt;
+              &lt;execution&gt;
+                  &lt;id&gt;jibx-2-wsdl&lt;/id&gt;
+                  &lt;phase&gt;process-classes&lt;/phase&gt;
+                  &lt;goals&gt;
+                      &lt;goal&gt;jibx2wsdl&lt;/goal&gt;
+                  &lt;/goals&gt;
+              &lt;/execution&gt;
+          &lt;/executions&gt;
+          &lt;configuration&gt;
+            &lt;interfaceClassNames&gt;
+              &lt;interfaceClassName&gt;com.sosnoski.ws.library.jibx2wsdl.BookServer1&lt;/interfaceClassName&gt;
+            &lt;/interfaceClassNames&gt;
+          &lt;/configuration&gt;
+      &lt;/plugin&gt;</pre>
+</div>
+<p>If you want to include your generated wsdl files in your distribution (jar) file, the easiest way is to change the output directory in your configuration section:</p>
+<div class="source"><pre>          &lt;configuration&gt;
+            &lt;interfaceClassNames&gt;
+              &lt;interfaceClassName&gt;com.sosnoski.ws.library.jibx2wsdl.BookServer1&lt;/interfaceClassName&gt;
+            &lt;/interfaceClassNames&gt;
+            &lt;outputDirectory&gt;/home/don/workspace-jibx/jibx/jibx-plugins/maven-jibx-plugin/target/classes/META-INF/schema&lt;/outputDirectory&gt;
+          &lt;/configuration&gt;</pre>
+</div>
+<p>Here the complete pom file used in the jibx test suite:</p>
+<div class="source"><pre>
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;parent&gt;
+    &lt;artifactId&gt;jibx-ota-test&lt;/artifactId&gt;
+    &lt;groupId&gt;org.jibx.ota.test&lt;/groupId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;artifactId&gt;jibx-ota-test-jibx2wsdl&lt;/artifactId&gt;
+  &lt;name&gt;jibx-ota-test-jibx2wsdl&lt;/name&gt;
+
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;executions&gt;
+              &lt;execution&gt;
+                  &lt;id&gt;jibx-2-wsdl&lt;/id&gt;
+                  &lt;phase&gt;process-classes&lt;/phase&gt;
+                  &lt;goals&gt;
+                      &lt;goal&gt;jibx2wsdl&lt;/goal&gt;
+                  &lt;/goals&gt;
+              &lt;/execution&gt;
+          &lt;/executions&gt;
+          &lt;configuration&gt;
+            &lt;interfaceClassNames&gt;
+              &lt;interfaceClassName&gt;com.sosnoski.ws.library.jibx2wsdl.BookServer1&lt;/interfaceClassName&gt;
+            &lt;/interfaceClassNames&gt;
+            &lt;outputDirectory&gt;/home/don/workspace-jibx/jibx/jibx-plugins/maven-jibx-plugin/target/classes/META-INF/schema&lt;/outputDirectory&gt;
+          &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+
+  &lt;dependencies&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-run&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-tools&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;scope&gt;compile&lt;/scope&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-bind&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;scope&gt;compile&lt;/scope&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-extras&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;scope&gt;compile&lt;/scope&gt;
+      &lt;/dependency&gt;
+      &lt;dependency&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;jibx-schema&lt;/artifactId&gt;
+          &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+          &lt;scope&gt;compile&lt;/scope&gt;
+      &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</pre>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          JiBX Project
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

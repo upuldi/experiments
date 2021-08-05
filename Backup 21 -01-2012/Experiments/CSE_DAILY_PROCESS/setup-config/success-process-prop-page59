@@ -1,0 +1,12 @@
+####### IGNORE LISTS ############
+TickerIgnoreList=
+VwaPriceSkipList=
+LastTradedPriceSkipList=
+LastTradedDateSkipList=
+HighSkipList=
+LowSkipList=
+ForeginHoldingSkipList=
+IssuedQuentitySkipList=
+TurnOVerSkipList=
+IndexedMarketCapSkipList=TOKYOCEMENT[X.0000]|MALWATTE[X.0000](+)|LAUGFSGAS[X.0000]
+QtyInCDSSkipList=

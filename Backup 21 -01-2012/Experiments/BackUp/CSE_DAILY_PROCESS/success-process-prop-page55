@@ -1,0 +1,38 @@
+### DIV SECTION COUNTS ###
+TickerNamesAndBoardDIVNoS=16,88
+VWAPriceDIVNoS=14,15,19,17,18,20,21,22,23,89
+LastTradedPriceDIVNoS=24,25,26,27,28,79,90
+LastTradedDateDIVNoS=29,30,31,32,33,34,35,36,80,91
+HighDIVNoS=37,38,45,49,50,81,92
+LowDIVNoS=39,40,46,51,52,82,93
+ForeginHoldingDIVNoS=41,42,47,53,54,55,56,83,94
+IssuedQuentityDIVNoS=43,44,48,57,58,84,95
+TurnoverDIVNoS=59,62,63,64,65,85,96
+IndexedMarketCapDIVNoS=60,61,66,67,68,69,70,71,72,73,86,97
+QtyInCDSNoS=74,75,76,77,78,87,98
+
+
+####### IGNORE LISTS ############
+TickerIgnoreList=BANK[X.0000] (+)|
+VwaPriceSkipList=CAPITAL LEASING (+)|MERCANTILE INV|SENKADAGALA
+LastTradedPriceSkipList=
+LastTradedDateSkipList=CAPITAL LEASING (+)|MERCANTILE INV|SENKADAGALA
+HighSkipList=
+LowSkipList=
+ForeginHoldingSkipList=THE FINANCE CO.[X.0000]|PEOPLE'S L FIN[W.0020]
+IssuedQuentitySkipList=
+TurnOVerSkipList=
+IndexedMarketCapSkipList=CEYLINCO INS.[X.0000] (+)|COMMERCIAL|HNB[X.0000] (+)|S M B LEASING[W.0015]|S M B LEASING[X.0000] (+)|S M B LEASING[W.0016]|SEYLAN BANK[X.0000] (+)|THE FINANCE CO.[X.0000]|PEOPLE'S L FIN[W.0020]
+QtyInCDSSkipList=
+
+
+######## RENAME LIST ##################
+TickerRenameList=COMMERCIAL|COMMERCIAL BANK[X.0000] (+)
+
+
+######## LOCATIONS ###################
+ProcessFileLocation=home/udoluweera/Experiments/CSE_DAILY_PROCESS/input/page55.html
+
+
+
+

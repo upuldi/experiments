@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <description>A plugin for Maven 2 to run the JiBX binding compiler, or generate Java sources from XSD schemas.</description>
+  <groupId>org.jibx</groupId>
+  <artifactId>maven-jibx-plugin</artifactId>
+  <version>1.2.2</version>
+  <goalPrefix>jibx</goalPrefix>
+  <isolatedRealm>false</isolatedRealm>
+  <inheritedByDefault>true</inheritedByDefault>
+  <mojos>
+    <mojo>
+      <goal>test-bind</goal>
+      <description>Runs the JiBX binding compiler on the test classes.</description>
+      <requiresDependencyResolution>test-compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>process-test-classes</phase>
+      <implementation>org.jibx.maven.TestCompileBindingMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains binding files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for binding files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; binding.xml.</description>
+        </parameter>
+        <parameter>
+          <name>load</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>modules</name>
+          <type>java.util.HashSet</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>A list of modules to search for binding files in the format: groupID:artifactID</description>
+        </parameter>
+        <parameter>
+          <name>multimodule</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag multi-module mode.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>validate</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+        <parameter>
+          <name>verify</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verifying generated/modified classes with BCEL.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="src/test/config">${directory}</directory>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <load implementation="boolean" default-value="false">${load}</load>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <validate implementation="boolean" default-value="true">${validate}</validate>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <multimodule implementation="boolean" default-value="false">${multi-module}</multimodule>
+        <verify implementation="boolean" default-value="false">${verify}</verify>
+        <modules implementation="java.util.HashSet">${modules}</modules>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>test-jibx2wsdl</goal>
+      <description>Generates WSDL from java code.</description>
+      <requiresDependencyResolution>test-compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>process-test-classes</phase>
+      <implementation>org.jibx.maven.TestJibx2WsdlMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>customizations</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for customization files.</description>
+        </parameter>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains binding files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for binding files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; binding.xml.</description>
+        </parameter>
+        <parameter>
+          <name>interfaceClassNames</name>
+          <type>java.util.ArrayList</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The full class names of the service interface.
+&lt;b&gt;Note:&lt;/b&gt; Classes should be in target/classes (which is where they should be after compiling).</description>
+        </parameter>
+        <parameter>
+          <name>load</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>modules</name>
+          <type>java.util.HashSet</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>A list of modules to search for binding files in the format: groupID:artifactID</description>
+        </parameter>
+        <parameter>
+          <name>multimodule</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag multi-module mode.</description>
+        </parameter>
+        <parameter>
+          <name>options</name>
+          <type>java.util.Map</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Extra options to be given for customization via CLI.&lt;p/&gt;
+Enter extra customizations or other command-line options.&lt;br/&gt;
+The extra customizations are described on the
+&lt;a href=&quot;/fromcode/jibx2wsdl-customs.html&quot;&gt;JiBX2WSDL customizations page&lt;/a&gt;&lt;br/&gt;
+The single character JiBX2WSDL commands may also be supplied here.&lt;br/&gt;
+For example, to include Names of extra classes (-x) and Sets the base address used for the service endpoint
+address specified in the WSDL, supply the following options:&lt;br/&gt;
+&lt;code&gt;
+&amp;lt;options&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;x&amp;gt;com.company.pacakge.ClassName&amp;lt;/x&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;service-base&amp;gt;http://localhost:8080/axis2/services&amp;lt;/service-base&amp;gt;&lt;br/&gt;
+&amp;lt;/options&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Target directory path for generated output (default is current directory).
+&lt;b&gt;Note:&lt;/b&gt; If you want the wsdl and schema included in your distribution,
+remember to include it in the &amp;lt;resources&amp;gt; section of your pom file.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectories</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The source directories.
+&lt;b&gt;Note:&lt;/b&gt; The source directory defaults to:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${basedir}/src/main/java&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;
+If you are using the code-gen plugin, you may want to specify the generated sources directory:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${basedir}/src/main/java&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${project.build.directory}/generated-source&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;
+If you don&apos;t want sources include, you will have to explicitly delare an empty list:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>validate</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+        <parameter>
+          <name>verify</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verifying generated/modified classes with BCEL.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="src/main/config">${directory}</directory>
+        <customizations implementation="java.util.ArrayList">${customizations}</customizations>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <multimodule implementation="boolean" default-value="false">${multi-module}</multimodule>
+        <modules implementation="java.util.HashSet">${modules}</modules>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <outputDirectory implementation="java.lang.String" default-value="${project.build.directory}/schema">${outputDirectory}</outputDirectory>
+        <load implementation="boolean" default-value="false">${load}</load>
+        <validate implementation="boolean" default-value="true">${validate}</validate>
+        <sourceDirectories implementation="java.util.ArrayList">${sourceDirectories}</sourceDirectories>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <interfaceClassNames implementation="java.util.ArrayList">${interfaceClassNames}</interfaceClassNames>
+        <verify implementation="boolean" default-value="false">${verify}</verify>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>bind</goal>
+      <description>Runs the JiBX binding compiler.</description>
+      <requiresDependencyResolution>compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>process-classes</phase>
+      <implementation>org.jibx.maven.CompileBindingMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains binding files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for binding files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; binding.xml.</description>
+        </parameter>
+        <parameter>
+          <name>load</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>modules</name>
+          <type>java.util.HashSet</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>A list of modules to search for binding files in the format: groupID:artifactID</description>
+        </parameter>
+        <parameter>
+          <name>multimodule</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag multi-module mode.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>validate</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+        <parameter>
+          <name>verify</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verifying generated/modified classes with BCEL.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="src/main/config">${directory}</directory>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <load implementation="boolean" default-value="false">${load}</load>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <validate implementation="boolean" default-value="true">${validate}</validate>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <multimodule implementation="boolean" default-value="false">${multi-module}</multimodule>
+        <verify implementation="boolean" default-value="false">${verify}</verify>
+        <modules implementation="java.util.HashSet">${modules}</modules>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>document-compare</goal>
+      <description>Compares two schemas or roundtrips a schema through a JiBX class and compares the results.
+If a mapped class is supplied, then the inFile is marshalled into the supplied class and then
+unmarshalled in the outFile (defaults to temp.xml) and compared with the original xml document.
+If no class is supplied, then the inFile is compared to the outFile XML files.
+&lt;b&gt;Note:&lt;/b&gt; This mojo only runs in test scope.</description>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>test</phase>
+      <implementation>org.jibx.maven.DocumentCompareMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>inFile</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The path to the source XML document to compare.
+NOTE: Relative paths start at ${basedir}.</description>
+        </parameter>
+        <parameter>
+          <name>mappedClass</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Root class name to use to round-trip the document.</description>
+        </parameter>
+        <parameter>
+          <name>outFile</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The path to the destination XML document to compare.
+NOTE: Relative paths start at ${basedir}; If this path is a filename, the directory is the same as inFile.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <outFile implementation="java.lang.String">${outFile}</outFile>
+        <mappedClass implementation="java.lang.String">${mappedClass}</mappedClass>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <inFile implementation="java.lang.String">${inFile}</inFile>
+      </configuration>
+    </mojo>
+    <mojo>
+      <goal>test-schema-codegen</goal>
+      <description>Generates Java test sources from XSD schemas.</description>
+      <requiresDependencyResolution>test-compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>generate-test-sources</phase>
+      <implementation>org.jibx.maven.TestSchemaCodeGenMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>customizations</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for customization files.</description>
+        </parameter>
+        <parameter>
+          <name>defaultNamespace</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Namespace applied in code generation when no-namespaced schema definitions are found (to generate
+no-namespaced schemas as though they were included in a particular namespace)</description>
+        </parameter>
+        <parameter>
+          <name>defaultPackage</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Default package for code generated from schema definitions with no namespace.</description>
+        </parameter>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains XSD files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includeBindings</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include existing bindings and use mappings from the bindings for matching schema global definitions.
+(this is the basis for modular code generation)
+Include base bindings as follows:&lt;br/&gt;
+&amp;lt;includeBindings&amp;gt;&lt;br/&gt;
+&amp;lt;includeBinding&amp;gt;base-binding.xml&amp;lt;/includeBinding&amp;gt;&lt;br/&gt;
+&amp;lt;/includeBindings&amp;gt;&lt;br/&gt;
+&lt;b&gt;Note:&lt;/b&gt; Relative paths start at ${basedir}.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for schema files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; *.xsd.</description>
+        </parameter>
+        <parameter>
+          <name>options</name>
+          <type>java.util.Map</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Extra options to be given for customization via CLI.&lt;p/&gt;
+Enter extra customizations or other command-line options.&lt;br/&gt;
+The extra customizations are described on the
+&lt;a href=&quot;/fromschema/codegen-customs.html&quot;&gt;CodeGen customizations page&lt;/a&gt;&lt;br/&gt;
+The single character CodeGen commands may also be supplied here.&lt;br/&gt;
+For example, to include a base binding file (-i) and prefer-inline code, supply the following options:&lt;br/&gt;
+&lt;code&gt;
+&amp;lt;options&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;i&amp;gt;base-binding.xml&amp;lt;/i&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;prefer-inline&amp;gt;true&amp;lt;/prefer-inline&amp;gt;&lt;br/&gt;
+&amp;lt;/options&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>targetDirectory</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Target directory where to generate Java source files.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="${basedir}/src/test/config">${directory}</directory>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <customizations implementation="java.util.ArrayList">${customizations}</customizations>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <targetDirectory implementation="java.lang.String" default-value="${basedir}/target/generated-test-sources">${targetDirectory}</targetDirectory>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <includeBindings implementation="java.util.ArrayList">${includeBindings}</includeBindings>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.apache.maven.project.MavenProjectHelper</role>
+          <field-name>projectHelper</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+    <mojo>
+      <goal>schema-codegen</goal>
+      <description>Generates Java sources from XSD schemas.</description>
+      <requiresDependencyResolution>compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>generate-sources</phase>
+      <implementation>org.jibx.maven.SchemaCodeGenMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>customizations</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for customization files.</description>
+        </parameter>
+        <parameter>
+          <name>defaultNamespace</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Namespace applied in code generation when no-namespaced schema definitions are found (to generate
+no-namespaced schemas as though they were included in a particular namespace)</description>
+        </parameter>
+        <parameter>
+          <name>defaultPackage</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Default package for code generated from schema definitions with no namespace.</description>
+        </parameter>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains XSD files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includeBindings</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include existing bindings and use mappings from the bindings for matching schema global definitions.
+(this is the basis for modular code generation)
+Include base bindings as follows:&lt;br/&gt;
+&amp;lt;includeBindings&amp;gt;&lt;br/&gt;
+&amp;lt;includeBinding&amp;gt;base-binding.xml&amp;lt;/includeBinding&amp;gt;&lt;br/&gt;
+&amp;lt;/includeBindings&amp;gt;&lt;br/&gt;
+&lt;b&gt;Note:&lt;/b&gt; Relative paths start at ${basedir}.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for schema files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; *.xsd.</description>
+        </parameter>
+        <parameter>
+          <name>options</name>
+          <type>java.util.Map</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Extra options to be given for customization via CLI.&lt;p/&gt;
+Enter extra customizations or other command-line options.&lt;br/&gt;
+The extra customizations are described on the
+&lt;a href=&quot;/fromschema/codegen-customs.html&quot;&gt;CodeGen customizations page&lt;/a&gt;&lt;br/&gt;
+The single character CodeGen commands may also be supplied here.&lt;br/&gt;
+For example, to include a base binding file (-i) and prefer-inline code, supply the following options:&lt;br/&gt;
+&lt;code&gt;
+&amp;lt;options&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;i&amp;gt;base-binding.xml&amp;lt;/i&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;prefer-inline&amp;gt;true&amp;lt;/prefer-inline&amp;gt;&lt;br/&gt;
+&amp;lt;/options&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>targetDirectory</name>
+          <type>java.lang.String</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Target directory where to generate Java source files.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="${basedir}/src/main/config">${directory}</directory>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <customizations implementation="java.util.ArrayList">${customizations}</customizations>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <targetDirectory implementation="java.lang.String" default-value="${basedir}/target/generated-sources">${targetDirectory}</targetDirectory>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <includeBindings implementation="java.util.ArrayList">${includeBindings}</includeBindings>
+      </configuration>
+      <requirements>
+        <requirement>
+          <role>org.apache.maven.project.MavenProjectHelper</role>
+          <field-name>projectHelper</field-name>
+        </requirement>
+      </requirements>
+    </mojo>
+    <mojo>
+      <goal>jibx2wsdl</goal>
+      <description>Generates WSDL from java code.</description>
+      <requiresDependencyResolution>compile</requiresDependencyResolution>
+      <requiresDirectInvocation>false</requiresDirectInvocation>
+      <requiresProject>true</requiresProject>
+      <requiresReports>false</requiresReports>
+      <aggregator>false</aggregator>
+      <requiresOnline>false</requiresOnline>
+      <inheritedByDefault>true</inheritedByDefault>
+      <phase>process-classes</phase>
+      <implementation>org.jibx.maven.Jibx2WsdlMojo</implementation>
+      <language>java</language>
+      <instantiationStrategy>per-lookup</instantiationStrategy>
+      <executionStrategy>once-per-session</executionStrategy>
+      <parameters>
+        <parameter>
+          <name>customizations</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for customization files.</description>
+        </parameter>
+        <parameter>
+          <name>directory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The directory which contains binding files.</description>
+        </parameter>
+        <parameter>
+          <name>excludes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Exclude pattern for binding files.</description>
+        </parameter>
+        <parameter>
+          <name>includes</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Include pattern for binding files.&lt;br/&gt;
+&lt;b&gt;Note: &lt;/b&gt;Uses the standard filter format described in the plexus
+&lt;a href=&quot;http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html&quot;&gt;DirectoryScanner&lt;/a&gt;.&lt;br/&gt;
+&lt;b&gt;Defaults value is:&lt;/b&gt; binding.xml.</description>
+        </parameter>
+        <parameter>
+          <name>interfaceClassNames</name>
+          <type>java.util.ArrayList</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>The full class names of the service interface.
+&lt;b&gt;Note:&lt;/b&gt; Classes should be in target/classes (which is where they should be after compiling).</description>
+        </parameter>
+        <parameter>
+          <name>load</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>modules</name>
+          <type>java.util.HashSet</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>A list of modules to search for binding files in the format: groupID:artifactID</description>
+        </parameter>
+        <parameter>
+          <name>multimodule</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag multi-module mode.</description>
+        </parameter>
+        <parameter>
+          <name>options</name>
+          <type>java.util.Map</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>Extra options to be given for customization via CLI.&lt;p/&gt;
+Enter extra customizations or other command-line options.&lt;br/&gt;
+The extra customizations are described on the
+&lt;a href=&quot;/fromcode/jibx2wsdl-customs.html&quot;&gt;JiBX2WSDL customizations page&lt;/a&gt;&lt;br/&gt;
+The single character JiBX2WSDL commands may also be supplied here.&lt;br/&gt;
+For example, to include Names of extra classes (-x) and Sets the base address used for the service endpoint
+address specified in the WSDL, supply the following options:&lt;br/&gt;
+&lt;code&gt;
+&amp;lt;options&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;x&amp;gt;com.company.pacakge.ClassName&amp;lt;/x&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;service-base&amp;gt;http://localhost:8080/axis2/services&amp;lt;/service-base&amp;gt;&lt;br/&gt;
+&amp;lt;/options&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>outputDirectory</name>
+          <type>java.lang.String</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Target directory path for generated output (default is current directory).
+&lt;b&gt;Note:&lt;/b&gt; If you want the wsdl and schema included in your distribution,
+remember to include it in the &amp;lt;resources&amp;gt; section of your pom file.</description>
+        </parameter>
+        <parameter>
+          <name>project</name>
+          <type>org.apache.maven.project.MavenProject</type>
+          <required>true</required>
+          <editable>false</editable>
+          <description>The maven project.</description>
+        </parameter>
+        <parameter>
+          <name>sourceDirectories</name>
+          <type>java.util.ArrayList</type>
+          <required>false</required>
+          <editable>true</editable>
+          <description>The source directories.
+&lt;b&gt;Note:&lt;/b&gt; The source directory defaults to:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${basedir}/src/main/java&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;
+If you are using the code-gen plugin, you may want to specify the generated sources directory:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${basedir}/src/main/java&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;${project.build.directory}/generated-source&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;
+If you don&apos;t want sources include, you will have to explicitly delare an empty list:
+&lt;code&gt;
+&amp;lt;sourceDirectories&amp;gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;lt;sourceDirectory&amp;gt;&amp;lt;/sourceDirectory&amp;gt;&lt;br/&gt;
+&amp;lt;/sourceDirectories&amp;gt;
+&lt;/code&gt;</description>
+        </parameter>
+        <parameter>
+          <name>validate</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for test loading generated/modified classes.</description>
+        </parameter>
+        <parameter>
+          <name>verbose</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verbose processing reports.</description>
+        </parameter>
+        <parameter>
+          <name>verify</name>
+          <type>boolean</type>
+          <required>true</required>
+          <editable>true</editable>
+          <description>Control flag for verifying generated/modified classes with BCEL.</description>
+        </parameter>
+      </parameters>
+      <configuration>
+        <directory implementation="java.lang.String" default-value="src/main/config">${directory}</directory>
+        <customizations implementation="java.util.ArrayList">${customizations}</customizations>
+        <includes implementation="java.util.ArrayList">${includes}</includes>
+        <multimodule implementation="boolean" default-value="false">${multi-module}</multimodule>
+        <modules implementation="java.util.HashSet">${modules}</modules>
+        <excludes implementation="java.util.ArrayList">${excludes}</excludes>
+        <outputDirectory implementation="java.lang.String" default-value="${project.build.directory}/schema">${outputDirectory}</outputDirectory>
+        <load implementation="boolean" default-value="false">${load}</load>
+        <validate implementation="boolean" default-value="true">${validate}</validate>
+        <sourceDirectories implementation="java.util.ArrayList">${sourceDirectories}</sourceDirectories>
+        <project implementation="org.apache.maven.project.MavenProject">${project}</project>
+        <verbose implementation="boolean" default-value="false">${verbose}</verbose>
+        <interfaceClassNames implementation="java.util.ArrayList">${interfaceClassNames}</interfaceClassNames>
+        <verify implementation="boolean" default-value="false">${verify}</verify>
+      </configuration>
+    </mojo>
+  </mojos>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-settings</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <type>jar</type>
+      <version>2.0.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-interpolation</artifactId>
+      <type>jar</type>
+      <version>1.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-container-default</artifactId>
+      <type>jar</type>
+      <version>1.0-alpha-9-stable-1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <type>jar</type>
+      <version>3.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>classworlds</groupId>
+      <artifactId>classworlds</artifactId>
+      <type>jar</type>
+      <version>1.1-alpha-2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-profile</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact-manager</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-repository-metadata</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.wagon</groupId>
+      <artifactId>wagon-provider-api</artifactId>
+      <type>jar</type>
+      <version>1.0-beta-6</version>
+    </dependency>
+    <dependency>
+      <groupId>backport-util-concurrent</groupId>
+      <artifactId>backport-util-concurrent</artifactId>
+      <type>jar</type>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-registry</artifactId>
+      <type>jar</type>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-tools</artifactId>
+      <type>jar</type>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-schema</artifactId>
+      <type>jar</type>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-run</artifactId>
+      <type>jar</type>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.woodstox</groupId>
+      <artifactId>wstx-asl</artifactId>
+      <type>jar</type>
+      <version>3.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>stax</groupId>
+      <artifactId>stax-api</artifactId>
+      <type>jar</type>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>bcel</groupId>
+      <artifactId>bcel</artifactId>
+      <type>jar</type>
+      <version>5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-bind</artifactId>
+      <type>jar</type>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jibx</groupId>
+      <artifactId>jibx-extras</artifactId>
+      <type>jar</type>
+      <version>1.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>xpp3</groupId>
+      <artifactId>xpp3</artifactId>
+      <type>jar</type>
+      <version>1.1.3.4.O</version>
+    </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.qdox</groupId>
+      <artifactId>qdox</artifactId>
+      <type>jar</type>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <type>jar</type>
+      <version>1.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jmock</groupId>
+      <artifactId>jmock</artifactId>
+      <type>jar</type>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jdt</groupId>
+      <artifactId>core</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v_771</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>resources</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070604</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>expressions</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070606-0010</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>runtime</artifactId>
+      <type>jar</type>
+      <version>3.3.100-v20070530</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse</groupId>
+      <artifactId>osgi</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070530</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>jobs</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070423</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>registry</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070522</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>preferences</artifactId>
+      <type>jar</type>
+      <version>3.2.100-v20070522</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>contenttype</artifactId>
+      <type>jar</type>
+      <version>3.2.100-v20070319</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>filesystem</artifactId>
+      <type>jar</type>
+      <version>1.1.0-v20070606</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse</groupId>
+      <artifactId>text</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070606-0010</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>commands</artifactId>
+      <type>jar</type>
+      <version>3.3.0-I20070605-0010</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>common</artifactId>
+      <type>jar</type>
+      <version>3.3.0-v20070426</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <type>jar</type>
+      <version>1.2.15</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <type>jar</type>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>activation</artifactId>
+      <type>jar</type>
+      <version>1.1</version>
+    </dependency>
+  </dependencies>
+</plugin>

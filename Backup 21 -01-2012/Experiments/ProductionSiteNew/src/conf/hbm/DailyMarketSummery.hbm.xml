@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="DailyMarketSummery" table="DAILY_MARKET_SUMMERY">
+
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="date" column="DAY" type="string" />
+		<property name="cseAllShareIndex" column="CSE_ALL_SHARE_INDEX" type="string" />
+		<property name="milankaPriceIndex" column="MILANKA_PRICE_INDEX" type="string" />
+		<property name="triOnAllShares" column="TRI_ON_ALL_SHARES" type="string" />
+		<property name="triOnMilankaShares" column="TRI_ON_MILANKA_SHARES" type="string" />
+		<property name="marketValueOfTurnover_rs" column="MARKET_VALUE_OF_TURNOVER_RS" type="string" />
+		<property name="tradesNo" column="TRADES_NO" type="string" />
+		<property name="domesticNo" column="DOMESTIC_NO" type="string" />
+		<property name="foreignNo" column="FOREIGN_NO" type="string" />
+		<property name="equityValueOfTurnoverRs" column="EQUITY_VALUE_OF_TURNOVER_RS" type="string" />
+		<property name="domesticPurchaseRs" column="DOMESTIC_PURCHASE_RS" type="string" />
+        <property name="domesticSalesRs" column="DOMESTIC_SALES_RS" type="string" />
+        <property name="foreignPurchaseRs" column="FOREIGN_PURCHASE_RS" type="string" />
+		<property name="foreignSalesRs" column="FOREIGN_SALES_RS" type="string" />
+		<property name="volumeOfTurnoverNo" column="VOLUME_OF_TURNOVER_NO" type="string" />
+        <property name="volumeOfDomesticNo" column="VOLUME_OF_DOMESTIC_NO" type="string" />
+		<property name="volumeOfForeginNo" column="VOLUME_OF_FOREIGN_NO" type="string" />
+		<property name="aspiChange" column="ASPI_CHANGE" type="string" />
+		<property name="mpiChange" column="MPI_CHANGE" type="string" />
+		<property name="aspiChangePresentage" column="ASPI_CHANGE_PRESENTAGE" type="string" />
+		<property name="mpiChangePresentage" column="MPI_CHANGE_PRESENTAGE" type="string" />
+
+	</class>
+
+</hibernate-mapping>

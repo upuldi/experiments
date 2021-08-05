@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain">
+
+    <class name="Stock"  table="DAILY_STOCK_STATISTICS">
+
+        <id column="ID" name="id">
+            <generator class="native"/>
+        </id>
+
+        <property column="COMPANY_NAME" name="tickerString"/>
+        <property column="VWA_PRICE" name="vwaPrice"/>
+        <property column="LAST_TRADED_PRICE" name="lastTradedPRice"/>
+        <property column="LAST_TRADED_DATE" name="lastTradedDate"/>
+        <property column="HIGH" name="high"/>
+        <property column="LOW" name="low"/>
+        <property column="FORIGN_HOLDING" name="foreginHolding"/>
+        <property column="ISSUED_QTY" name="issuedQuantity"/>
+        <property column="TURNOVER" name="turnover"/>
+        <property column="INDEXED_MARKET_CAP" name="indexedMarketCap"/>
+        <property column="QTY_IN_CDS" name="qtyInCDS"/>
+
+    </class>
+
+</hibernate-mapping>

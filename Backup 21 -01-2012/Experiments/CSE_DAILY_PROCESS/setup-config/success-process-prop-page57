@@ -1,0 +1,12 @@
+####### IGNORE LISTS ############
+TickerIgnoreList=
+VwaPriceSkipList=
+LastTradedPriceSkipList=
+LastTradedDateSkipList=
+HighSkipList=
+LowSkipList=
+ForeginHoldingSkipList=HOTELSCORP.|CITRUSLEISURE|CITRUSLEISURE[W.0018]|CITRUSLEISURE[W.0017]|KEELLSHOTELS|TANGERINE|NAWALOKA
+IssuedQuentitySkipList=
+TurnOVerSkipList=
+IndexedMarketCapSkipList=CEYLON|DURDANS[X.0000]|CITRUSLEISURE[W.0019]|CITRUSLEISURE[W.0018]|CITRUSLEISURE[W.0017]|SERENDIB
+QtyInCDSSkipList=

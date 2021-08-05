@@ -1,0 +1,23 @@
+<order order-date="2008-10-18" ship-date="2008-10-22" xmlns="http://jibx.org/custom">
+  <order-num>12345678</order-num>
+  <customer>
+    <customer-number>5678</customer-number>
+    <first-name>John</first-name>
+    <last-name>Smith</last-name>
+  </customer>
+  <bill-to state="WA" post-code="98059">
+    <street1>12345 Happy Lane</street1>
+    <city>Plunk</city>
+    <country>USA</country>
+  </bill-to>
+  <shipping>PRIORITY_MAIL</shipping>
+  <ship-to state="WA" postCode="98034">
+    <street1>333 River Avenue</street1>
+    <city>Kirkland</city>
+  </ship-to>
+  <order-items>
+    <line-item quantity="1" price="5.99" id="AC4983498512"/>
+    <line-item quantity="2" price="9.50" id="IW2349050499"/>
+    <line-item quantity="1" price="8.95" id="RC3000488209"/>
+  </order-items>
+</order>

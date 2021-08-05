@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+    <class name="GoldPrice" table="GOLD">
+
+        <id name="id" column="ID" type="long">
+            <generator class="native" />
+        </id>
+
+        <property name="date" column="Date" />
+        <property name="goldOunce" column="GoldOunce" />
+        <property name="goldPound" column="GoldPound" />
+        <property name="gramKarat24" column="GramKarat24" />
+        <property name="gramKarat22" column="GramKarat22" />
+        <property name="gramKarat21" column="GramKarat21" />
+        <property name="gramKarat18" column="GramKarat18" />
+        <property name="gramKarat14" column="GramKarat14" />
+
+    </class>
+</hibernate-mapping>

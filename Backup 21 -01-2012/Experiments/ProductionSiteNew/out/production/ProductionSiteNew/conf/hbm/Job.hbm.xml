@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="Job" table="JOBS">
+
+		<id name="id" column="id" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="date" column="DATE" />
+		<property name="jobName" column="JOB_NAME" />
+		<property name="startTime" column="START_TIME" />
+		<property name="endTime" column="END_TIME" />
+		<property name="event" column="EVENT" />
+		<property name="comment" column="COMMENT" />
+		<property name="status" column="STATUS" />
+
+	</class>
+
+    <query name="getJobByNameGroupAndDate"> from  Job where date=:date and jobName = :jobName and
+    status = 'STARTED' </query>
+
+
+
+
+
+</hibernate-mapping>

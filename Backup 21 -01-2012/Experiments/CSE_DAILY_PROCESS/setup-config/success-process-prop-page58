@@ -1,0 +1,12 @@
+####### IGNORE LISTS ############
+TickerIgnoreList=
+VwaPriceSkipList=
+LastTradedPriceSkipList=
+LastTradedDateSkipList=
+HighSkipList=
+LowSkipList=
+ForeginHoldingSkipList=
+IssuedQuentitySkipList=
+TurnOVerSkipList=
+IndexedMarketCapSkipList=ENVI.|RENUKA|BLUEDIAMONDS[X.0000]|
+QtyInCDSSkipList=

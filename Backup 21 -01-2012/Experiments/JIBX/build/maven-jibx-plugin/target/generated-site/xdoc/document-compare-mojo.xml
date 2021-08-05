@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>jibx:document-compare</title>
+  </properties>
+  <body>
+    <section name="jibx:document-compare">
+      <p><strong>Full name</strong>:</p>
+      <p>org.jibx:maven-jibx-plugin:1.2.2:document-compare</p>
+      <p><strong>Description</strong>:</p>
+      <div>Compares two schemas or roundtrips a schema through a JiBX class
+and compares the results. If a mapped class is supplied, then the
+inFile is marshalled into the supplied class and then unmarshalled
+in the outFile (defaults to temp.xml) and compared with the
+original xml document. If no class is supplied, then the inFile is
+compared to the outFile XML files. <b>Note:</b> This mojo only runs
+in test scope.</div>
+      <p><strong>Attributes</strong>:</p>
+      <ul>
+        <li>Requires a Maven 2.0 project to be executed.</li>
+        <li>Binds by default to the lifecycle phase: <code>test</code>.</li>
+      </ul>
+      <subsection name="Required Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#inFile">inFile</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>The path to the source XML document to compare. NOTE: Relative
+paths start at ${basedir}.<br/></td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Optional Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#mappedClass">mappedClass</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>Root class name to use to round-trip the document.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#outFile">outFile</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>The path to the destination XML document to compare. NOTE: Relative
+paths start at ${basedir}; If this path is a filename, the
+directory is the same as inFile.<br/></td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Parameter Details">
+        <p><strong><a name="inFile">inFile</a>:</strong></p>
+        <div>The path to the source XML document to compare. NOTE: Relative
+paths start at ${basedir}.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${inFile}</code></li>
+        </ul><hr/><p><strong><a name="mappedClass">mappedClass</a>:</strong></p>
+        <div>Root class name to use to round-trip the document.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${mappedClass}</code></li>
+        </ul><hr/><p><strong><a name="outFile">outFile</a>:</strong></p>
+        <div>The path to the destination XML document to compare. NOTE: Relative
+paths start at ${basedir}; If this path is a filename, the
+directory is the same as inFile.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${outFile}</code></li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>

@@ -1,0 +1,120 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.sosnoski.com/order/wsdl/StoreService" xmlns:ns1="http://ws.sosnoski.com/order/wsdl" targetNamespace="http://ws.sosnoski.com/order/wsdl/StoreService">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.sosnoski.com/order/wsdl" xmlns:ns1="http://ws.sosnoski.com/order/data" elementFormDefault="qualified" targetNamespace="http://ws.sosnoski.com/order/wsdl">
+      <xs:import namespace="http://ws.sosnoski.com/order/data" schemaLocation="data.xsd"/>
+      <xs:element name="placeOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="ns1:order" name="order" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="placeOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="id" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="id" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="retrieveOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="ns1:order" name="return" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:string" name="id" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:boolean" name="return"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="placeOrderMessage">
+    <wsdl:part name="part" element="ns1:placeOrder"/>
+  </wsdl:message>
+  <wsdl:message name="placeOrderResponseMessage">
+    <wsdl:part name="part" element="ns1:placeOrderResponse"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveOrderMessage">
+    <wsdl:part name="part" element="ns1:retrieveOrder"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveOrderResponseMessage">
+    <wsdl:part name="part" element="ns1:retrieveOrderResponse"/>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderMessage">
+    <wsdl:part name="part" element="ns1:cancelOrder"/>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderResponseMessage">
+    <wsdl:part name="part" element="ns1:cancelOrderResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="StoreServicePortType">
+    <wsdl:documentation>Interface for placing orders and checking status.</wsdl:documentation>
+    <wsdl:operation name="placeOrder">
+      <wsdl:documentation>Submit a new order.</wsdl:documentation>
+      <wsdl:input message="tns:placeOrderMessage"/>
+      <wsdl:output message="tns:placeOrderResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveOrder">
+      <wsdl:documentation>Retrieve order information.</wsdl:documentation>
+      <wsdl:input message="tns:retrieveOrderMessage"/>
+      <wsdl:output message="tns:retrieveOrderResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrder">
+      <wsdl:documentation>Cancel order. This can only be used for orders which have not been shipped.</wsdl:documentation>
+      <wsdl:input message="tns:cancelOrderMessage"/>
+      <wsdl:output message="tns:cancelOrderResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StoreServiceBinding" type="tns:StoreServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="placeOrder">
+      <soap:operation soapAction="urn:placeOrder"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveOrder">
+      <soap:operation soapAction="urn:retrieveOrder"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrder">
+      <soap:operation soapAction="urn:cancelOrder"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StoreService">
+    <wsdl:port name="StoreServicePort" binding="tns:StoreServiceBinding">
+      <soap:address location="http://localhost:8080/axis2/services/StoreService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

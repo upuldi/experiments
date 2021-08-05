@@ -1,0 +1,37 @@
+<binding xmlns:tns="http://jibx.org/starter" name="binding" package="org.jibx.starter">
+  <namespace uri="http://jibx.org/starter" default="elements"/>
+  <mapping abstract="true" type-name="tns:order" class="org.jibx.starter.Order">
+    <value style="element" name="orderNumber" field="orderNumber"/>
+    <structure map-as="tns:customer" field="customer" name="customer"/>
+    <structure map-as="tns:address" field="billTo" name="billTo"/>
+    <value style="element" name="shipping" field="shipping"/>
+    <value style="attribute" name="orderDate" field="orderDate"/>
+    <structure map-as="tns:address" field="shipTo" usage="optional" name="shipTo"/>
+    <collection field="items" usage="optional" create-type="java.util.ArrayList">
+      <structure map-as="tns:item" name="item"/>
+    </collection>
+    <value style="attribute" name="shipDate" field="shipDate" usage="optional"/>
+    <value style="attribute" name="total" field="total" usage="optional"/>
+  </mapping>
+  <mapping class="org.jibx.starter.Order" name="order">
+    <structure map-as="tns:order"/>
+  </mapping>
+  <mapping abstract="true" type-name="tns:address" class="org.jibx.starter.Address">
+    <value style="element" name="street1" field="street1"/>
+    <value style="element" name="street2" field="street2" usage="optional"/>
+    <value style="element" name="city" field="city"/>
+    <value style="attribute" name="state" field="state" usage="optional"/>
+    <value style="attribute" name="postCode" field="postCode" usage="optional"/>
+    <value style="element" name="country" field="country" usage="optional"/>
+  </mapping>
+  <mapping abstract="true" type-name="tns:item" class="org.jibx.starter.Item">
+    <value style="attribute" name="id" field="id"/>
+    <value style="attribute" name="quantity" field="quantity"/>
+    <value style="attribute" name="price" field="price"/>
+  </mapping>
+  <mapping abstract="true" type-name="tns:customer" class="org.jibx.starter.Customer">
+    <value style="element" name="customerNumber" field="customerNumber"/>
+    <value style="element" name="firstName" field="firstName"/>
+    <value style="element" name="lastName" field="lastName"/>
+  </mapping>
+</binding>

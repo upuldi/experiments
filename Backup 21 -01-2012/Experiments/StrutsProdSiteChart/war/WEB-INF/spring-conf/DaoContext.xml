@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="eODDataDao" class="com.dao.EODDataDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="cSEListedCompanyDao" class="com.dao.CSEListedCompanyDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="rubberAuctionDao" class="com.dao.RubberAuctionDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="marketSummeryViewDao" class="com.dao.MarketSummeryViewDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="aspiDao" class="com.dao.ASPIDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="rubberDao" class="com.dao.RubberDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="goldDao" class="com.dao.GoldDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="rtChartDao" class="com.dao.RTChartDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="eODChartDao" class="com.dao.EODChartDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="eODForignHoldingDao" class="com.dao.EODForignHoldingDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="tradeDaoJDBC" class="com.dao.TradeDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+    <bean id="marketSummeryDao" class="com.dao.MarketSummeryDaoJDBC">
+        <property name="dataSource" ref="jdbcDataSource"/>
+    </bean>
+
+
+</beans>

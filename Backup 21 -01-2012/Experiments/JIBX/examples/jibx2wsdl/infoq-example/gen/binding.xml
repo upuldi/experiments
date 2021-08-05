@@ -1,0 +1,27 @@
+<binding xmlns:ns2="http://ws.sosnoski.com/order/data" name="binding" package="com.sosnoski.infoq.ex1" force-classes="true">
+  <namespace uri="http://ws.sosnoski.com/order/data" default="elements"/>
+  <namespace uri="http://ws.sosnoski.com/order/wsdl" prefix="ns1"/>
+  <mapping abstract="true" type-name="ns2:order" class="com.sosnoski.infoq.ex1.Order">
+    <value style="attribute" name="customerId" field="customerId"/>
+    <value style="element" name="customerName" field="customerName"/>
+    <structure map-as="ns2:address" field="billTo" name="billTo"/>
+    <collection field="items" create-type="java.util.ArrayList">
+      <structure type="com.sosnoski.infoq.ex1.Item" name="item">
+        <value style="attribute" name="id" field="id"/>
+        <value style="attribute" name="quantity" field="quantity"/>
+        <value style="attribute" name="price" field="price"/>
+      </structure>
+    </collection>
+    <value style="element" name="orderId" field="orderId" usage="optional"/>
+    <value style="attribute" name="orderDate" field="orderDate" usage="optional"/>
+    <value style="attribute" name="shipDate" field="shipDate" usage="optional"/>
+    <structure map-as="ns2:address" field="shipTo" usage="optional" name="shipTo"/>
+  </mapping>
+  <mapping abstract="true" type-name="ns2:address" class="com.sosnoski.infoq.ex1.Address">
+    <value style="element" name="street1" field="street1"/>
+    <value style="element" name="city" field="city"/>
+    <value style="attribute" name="state" field="state"/>
+    <value style="attribute" name="zip" field="zip"/>
+    <value style="element" name="street2" field="street2" usage="optional"/>
+  </mapping>
+</binding>

@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>JiBX - Plugin Documentation</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            maven-jibx-plugin
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-10
+                      </div>
+            <div class="xright">            <a href="../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+              <strong>Goals</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Configuration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="modes.html">Execution Modes</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="basic.html">Basic Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="advanced.html">Advanced Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="schema-codegen.html">Generate Java Sources from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="modular-codegen.html">Generate Modular Code from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="testing.html">Test Case Usage</a>
+          </li>
+              
+    <li class="none">
+                    <a href="compare.html">XML Document comparison</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+            
+              
+            <li class="expanded">
+                    <a href="project-reports.html">Project Reports</a>
+                  <ul>
+                  
+    <li class="none">
+              <strong>Plugin Documentation</strong>
+        </li>
+              </ul>
+        </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <a name="Plugin_Documentation"></a><div class="section"><h2>Plugin Documentation</h2>
+<p>Goals available for this plugin:</p>
+<table class="bodyTable"><tr class="a"><th>Goal</th>
+<th>Description</th>
+</tr>
+<tr class="b"><td><a href="bind-mojo.html">jibx:bind</a></td>
+<td>Runs the JiBX binding compiler.</td>
+</tr>
+<tr class="a"><td><a href="document-compare-mojo.html">jibx:document-compare</a></td>
+<td>Compares two schemas or roundtrips a schema through a JiBX class
+and compares the results. If a mapped class is supplied, then the
+inFile is marshalled into the supplied class and then unmarshalled
+in the outFile (defaults to temp.xml) and compared with the
+original xml document. If no class is supplied, then the inFile is
+compared to the outFile XML files. <b>Note:</b> This mojo only runs
+in test scope.</td>
+</tr>
+<tr class="b"><td><a href="jibx2wsdl-mojo.html">jibx:jibx2wsdl</a></td>
+<td>Generates WSDL from java code.</td>
+</tr>
+<tr class="a"><td><a href="schema-codegen-mojo.html">jibx:schema-codegen</a></td>
+<td>Generates Java sources from XSD schemas.</td>
+</tr>
+<tr class="b"><td><a href="test-bind-mojo.html">jibx:test-bind</a></td>
+<td>Runs the JiBX binding compiler on the test classes.</td>
+</tr>
+<tr class="a"><td><a href="test-jibx2wsdl-mojo.html">jibx:test-jibx2wsdl</a></td>
+<td>Generates WSDL from java code.</td>
+</tr>
+<tr class="b"><td><a href="test-schema-codegen-mojo.html">jibx:test-schema-codegen</a></td>
+<td>Generates Java test sources from XSD schemas.</td>
+</tr>
+</table>
+<a name="System_Requirements"></a><div class="section"><h3>System Requirements</h3>
+<p>The following specifies the minimum requirements to run this Maven plugin:</p>
+<table class="bodyTable"><tr class="a"><td>Maven</td>
+<td>2.0</td>
+</tr>
+<tr class="b"><td>JDK</td>
+<td>1.1</td>
+</tr>
+<tr class="a"><td>Memory</td>
+<td>No minimum requirement.</td>
+</tr>
+<tr class="b"><td>Disk Space</td>
+<td>No minimum requirement.</td>
+</tr>
+</table>
+</div>
+<a name="Usage"></a><div class="section"><h3>Usage</h3>
+<p>You should specify the version in your project's plugin configuration:</p>
+<div class="source"><pre>&lt;project&gt;
+  ...
+  &lt;build&gt;
+    &lt;!-- To define the plugin version in your parent POM --&gt;
+    &lt;pluginManagement&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+          &lt;version&gt;1.2.2&lt;/version&gt;
+        &lt;/plugin&gt;
+        ...
+      &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+    &lt;!-- To use the plugin goals in your POM or parent POM --&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.2.2&lt;/version&gt;
+      &lt;/plugin&gt;
+      ...
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+  ...
+&lt;/project&gt;
+</pre>
+</div>
+<p>For more information, see <a class="externalLink" href="http://maven.apache.org/guides/mini/guide-configuring-plugins.html">&quot;Guide to Configuring Plug-ins&quot;</a></p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          JiBX Project
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

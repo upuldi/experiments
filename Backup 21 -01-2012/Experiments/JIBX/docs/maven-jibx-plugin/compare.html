@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JiBX - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            maven-jibx-plugin
+    
+            </a>
+                        <a href="http://sourceforge.net/" id="bannerRight">
+    
+                                    <img src="http://sourceforge.net/sflogo.php?group_id=69358&type=5" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2011-02-09
+                      </div>
+            <div class="xright">            <a href="../index.html">JiBX Home Page</a>
+            |
+                <a href="http://www.sourceforge.net/projects/jibx/" class="externalLink">SourceForge Page</a>
+            |
+                <a href="http://jibx.sourceforge.net/mail-lists.html" class="externalLink">Mailing Lists</a>
+            |
+                <a href="http://wiki.jibx.org/" class="externalLink">Wiki</a>
+            |
+                <a href="http://jibx.sourceforge.net/bugs.html" class="externalLink">Bugs</a>
+            |
+                <a href="http://sourceforge.net/project/showfiles.php?group_id=69358" class="externalLink">Downloads</a>
+            
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Main Project</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="../index.html">JiBX</a>
+          </li>
+          </ul>
+              <h5>Overview</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Introduction</a>
+          </li>
+              
+    <li class="none">
+                    <a href="plugin-info.html">Goals</a>
+          </li>
+              
+    <li class="none">
+                    <a href="usage.html">Usage</a>
+          </li>
+          </ul>
+              <h5>Configuration</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="modes.html">Execution Modes</a>
+          </li>
+          </ul>
+              <h5>Examples</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="basic.html">Basic Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="advanced.html">Advanced Binding Compilation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="schema-codegen.html">Generate Java Sources from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="modular-codegen.html">Generate Modular Code from Schemas</a>
+          </li>
+              
+    <li class="none">
+                    <a href="testing.html">Test Case Usage</a>
+          </li>
+              
+    <li class="none">
+              <strong>XML Document comparison</strong>
+        </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Comparing XML documents using JiBX utilities</h2>
+<div class="section"><h3>Compare two XML document with JiBX .</h3>
+<p>Here is a sample pom.xml:</p>
+<div class="source"><pre>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;parent&gt;
+    &lt;artifactId&gt;jibx-ota-test&lt;/artifactId&gt;
+    &lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;artifactId&gt;jibx-ota-test-compare-docs&lt;/artifactId&gt;
+  &lt;name&gt;jibx-ota-test-compare-docs (Compare two documents)&lt;/name&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+          &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+          &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+          &lt;version&gt;1.2.2&lt;/version&gt;
+          &lt;configuration&gt;
+              &lt;inFile&gt;src/test/resources/data.xml&lt;/inFile&gt;
+              &lt;outFile&gt;src/test/resources/data2.xml&lt;/outFile&gt;
+          &lt;/configuration&gt;
+          &lt;executions&gt;
+              &lt;execution&gt;
+                  &lt;id&gt;compare-jibx-docs&lt;/id&gt;
+                  &lt;phase&gt;test&lt;/phase&gt;
+                  &lt;goals&gt;
+                      &lt;goal&gt;document-compare&lt;/goal&gt;
+                  &lt;/goals&gt;
+              &lt;/execution&gt;
+          &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+      &lt;artifactId&gt;jibx-run&lt;/artifactId&gt;
+      &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+      &lt;artifactId&gt;jibx-extras&lt;/artifactId&gt;
+      &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;  &lt;!-- Why isn't this a jibx dependency? --&gt;
+      &lt;groupId&gt;joda-time&lt;/groupId&gt;
+      &lt;artifactId&gt;joda-time&lt;/artifactId&gt;
+      &lt;version&gt;1.6.2&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</pre>
+</div>
+<p>Note that the data.xml and data2.xml are the files being compared.</p>
+</div>
+<div class="section"><h3>You can roundtrip an XML document through a JiBX class and compare it with the original document.</h3>
+<p>Here is a sample pom.xml: </p>
+<div class="source"><pre>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;parent&gt;
+    &lt;artifactId&gt;jibx-ota-test&lt;/artifactId&gt;
+    &lt;groupId&gt;org.jibx.ota.osgi&lt;/groupId&gt;
+    &lt;version&gt;1.2.3&lt;/version&gt;
+  &lt;/parent&gt;
+
+  &lt;artifactId&gt;jibx-ota-test-gen-compare&lt;/artifactId&gt;
+  &lt;name&gt;jibx-ota-test-gen-compare (Roundtrip document and compare)&lt;/name&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+
+  &lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+  &lt;/properties&gt;
+
+  &lt;build&gt;
+    &lt;plugins&gt;
+    
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-jibx-plugin&lt;/artifactId&gt;
+        &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;generate-java-code-from-schema&lt;/id&gt;
+              &lt;phase&gt;generate-test-sources&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;test-schema-codegen&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+          &lt;execution&gt;
+              &lt;id&gt;compile-binding&lt;/id&gt;
+            &lt;phase&gt;process-test-classes&lt;/phase&gt;
+              &lt;goals&gt;
+                  &lt;goal&gt;test-bind&lt;/goal&gt;
+              &lt;/goals&gt;
+              &lt;configuration&gt;
+                  &lt;directory&gt;target/generated-test-sources&lt;/directory&gt;
+              &lt;/configuration&gt;
+          &lt;/execution&gt;
+          &lt;execution&gt;
+              &lt;id&gt;compare-jibx-docs&lt;/id&gt;
+              &lt;phase&gt;test&lt;/phase&gt;
+              &lt;goals&gt;
+                  &lt;goal&gt;document-compare&lt;/goal&gt;
+              &lt;/goals&gt;
+              &lt;configuration&gt;
+                  &lt;mappedClass&gt;org.opentravel.ota.OTAAirLowFareSearchRQ&lt;/mappedClass&gt;
+                  &lt;inFile&gt;src/test/resources/OTA_AirLowFareSearchRQ2.xml&lt;/inFile&gt;
+              &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+      
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.3&lt;/version&gt;
+            &lt;configuration&gt;
+            &lt;fork&gt;true&lt;/fork&gt;
+              &lt;source&gt;1.5&lt;/source&gt;
+              &lt;target&gt;1.5&lt;/target&gt;
+            &lt;/configuration&gt;
+      &lt;/plugin&gt;
+      
+     &lt;plugin&gt;
+        &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+        &lt;artifactId&gt;build-helper-maven-plugin&lt;/artifactId&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;id&gt;add-test-source&lt;/id&gt;
+            &lt;phase&gt;generate-sources&lt;/phase&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;add-test-source&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;sources&gt;
+                &lt;source&gt;${basedir}/target/generated-test-sources&lt;/source&gt;
+              &lt;/sources&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+      &lt;artifactId&gt;jibx-run&lt;/artifactId&gt;
+      &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jibx&lt;/groupId&gt;
+      &lt;artifactId&gt;jibx-extras&lt;/artifactId&gt;
+      &lt;version&gt;1.2.3-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</pre>
+</div>
+<p>This org.opentravel.ota.OTAAirLowFareSearchRQ is the class that the OTA_AirLowFareSearchRQ2.xml will be marshalled to and unmarshalled before being compared with the original (OTA_AirLowFareSearchRQ2.xml) document.</p>
+<p>Note the use of the build-helper-maven-plugin to add the generated-test-sources directory to the source path.</p>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2005-2011
+    
+          JiBX Project
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

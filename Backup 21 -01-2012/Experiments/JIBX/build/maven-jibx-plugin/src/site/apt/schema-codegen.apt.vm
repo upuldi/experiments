@@ -1,0 +1,74 @@
+Generate Java Sources from Schemas
+
+* Java Sources from XSD Schemas
+
+	Here is a sample plugin section:
+
+---
+    <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>maven-jibx-plugin</artifactId>
+        <version>${project.version}</version>
+        <configuration>
+            <directory>src/main/conf</directory>
+            <includes>
+                <include>myschema.xsd</include>
+            </includes>
+            <options>
+                <package>my.package</package>
+            </options>
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>schema-codegen</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+---
+
+
+Generate Java Sources from Schemas and Compile Binding
+
+* Java Sources from XSD Schemas
+
+	Here is below a sample usage:
+
+---
+	<plugin>
+	    <groupId>org.jibx</groupId>
+	    <artifactId>maven-jibx-plugin</artifactId>
+	    <version>${project.version}</version>
+	    <executions>
+	        <execution>
+	            <id>generate-java-code-from-schema</id>
+	            <goals>
+	                <goal>schema-codegen</goal>
+	            </goals>
+	            <configuration>
+	                <directory>src/main/conf</directory>
+	                <includes>
+	                    <include>myschema.xsd</include>
+	                </includes>
+	                <options>
+	                    <package>my.package</package>
+	                </options>
+	            </configuration>
+	        </execution>
+	        <execution>
+	            <id>compile-binding</id>
+	            <goals>
+	                <goal>bind</goal>
+	            </goals>
+	            <configuration>
+	                <directory>target/generated-sources</directory>
+	                <load>true</load>
+	                <validate>true</validate>
+	                <!--<verbose>true</verbose>-->
+	                <verify>true</verify>
+	            </configuration>
+	        </execution>
+	    </executions>
+	</plugin>
+---

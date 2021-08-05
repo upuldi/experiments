@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <import resource="ManagerContext.xml" />
+
+    <bean id="linkAction" class="com.site.action.link.LinkAction"/>
+    <bean id="dayChartAction" class="com.site.action.chart.DayChartAction">
+        <property name="eodDataManager" ref="eODDataManager" />
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+    </bean>
+    <bean id="candleChartAction" class="com.site.action.chart.CandleChartAction">
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+    </bean>
+    <bean id="oHLCChartAction" class="com.site.action.chart.OHLCChartAction">
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+    </bean>
+    <bean id="eODChartAction" class="com.site.action.chart.EODChartAction">
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+    </bean>
+    <bean id="eODChartSideBarAction" class="com.site.action.chart.EODChartSideBarAction">
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+    </bean>
+    <bean id="marketChartAction" class="com.site.action.chart.MarketChartAction">
+        <property name="marketSummeryViewDao" ref="marketSummeryViewDao" />
+    </bean>
+    <bean id="marketTradesChartAction" class="com.site.action.chart.MarketTradesChartAction">
+    </bean>
+    <bean id="marketTurnoverChartAction" class="com.site.action.chart.MarketTurnoverChartAction">
+    </bean>
+    <bean id="marketVolumeChartAction" class="com.site.action.chart.MarketVolumeChartAction">
+    </bean>
+    <bean id="marketDomesticActivityAction" class="com.site.action.chart.MarketDomesticActivityAction">
+    </bean>
+    <bean id="marketForeignActivityAction" class="com.site.action.chart.MarketForeignActivityAction">
+    </bean>
+    <bean id="marketSummeryAllAction" class="com.site.action.chart.MarketSummeryAllAction">
+    </bean>
+    <bean id="realtimeIndexChartAction" class="com.site.action.chart.RealtimeIndexChartAction">
+    </bean>
+    <bean id="realtimeChartAction" class="com.site.action.chart.RealtimeChartAction">
+        <property name="cseListedCompanyManager" ref="cSEListedCompanyManager" />
+        <property name="eodDataManager" ref="eODDataManager" />
+    </bean>
+    <bean id="marketDataCSV" class="com.site.action.amchart.MarketDataAction">
+        <property name="marketSummeryDao" ref="marketSummeryDao" />
+    </bean>
+    <bean id="eODDataAction" class="com.site.action.amchart.EODDataAction">
+        <property name="eodChartDao" ref="eODChartDao" />
+    </bean>
+    <bean id="realTimeDataCSVAction" class="com.site.action.amchart.RealTimeDataCSVAction">
+        <property name="rtChartDao" ref="rtChartDao" />
+    </bean>
+    <bean id="realTImeIndexDataCSVAction" class="com.site.action.amchart.RealTImeIndexDataCSVAction">
+        <property name="rtChartDao" ref="rtChartDao" />
+    </bean>
+    <bean id="commodityDataCVSAction" class="com.site.action.amchart.CommodityDataCVSAction">
+        <property name="rubberDao" ref="rubberDao" />
+        <property name="goldDao" ref="goldDao" />
+    </bean>
+    <bean id="realtimeIndexAJAXData" class="com.site.action.ajax.RealtimeIndexAJAXData"/>
+    <bean id="realtimeMarketStatusData" class="com.site.action.ajax.RealtimeMarketStatusData"/>
+
+</beans>

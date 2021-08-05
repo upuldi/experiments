@@ -1,0 +1,196 @@
+Generate Modular Code from Schemas
+
+* If your XSD Schema lends itself to modularization, the JiBX code generator
+  offers the most flexible code generation that you will find.
+  
+  Since JiBX allows generation of code into different java packages, JiBX is the best
+  choice if you want to split a large schema into smaller OSGi modules.
+  
+  The following samples are taken from the {{{../jibxota/jibxotaosgi.html}jibx-ota-osgi sub-project}}.
+  This project breaks the travel industry's {{{http://www.opentravel.org}opentravel}} schema is modules based on
+  industry segment. Each module is a maven project as well as an osgi module. This insures the correct
+  modules are includes in a project and only the needed modules will be loaded at runtime.
+
+	This is a sample pom.xml file from the base module:
+	
+---
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.jibx.ota.osgi</groupId>
+  <artifactId>jibx-ota-osgi-base</artifactId>
+  <version>${project.version}</version>
+  <packaging>bundle</packaging>
+  <name>jibx-ota-osgi-base (opentravel OSGI base bundle)</name>
+
+  <build>
+    <!-- To use the plugin goals in your POM or parent POM -->
+    <plugins>
+
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>maven-jibx-plugin</artifactId>
+        <version>${project.version}</version>
+        
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<directory>${schemaDirectory}</directory>
+	            <customizations>
+	            	<customization>${basedir}/custom-modular-base.xml</customization>
+	            </customizations>
+	            <includes>
+	                <include>OTA_Common*.xsd</include>
+	                <include>OTA_SimpleTypes.xsd</include>
+	            </includes>
+                <defaultNamespace>http://www.opentravel.org/OTA/2003/05</defaultNamespace>
+	        </configuration>
+          </execution>
+                <execution>
+                    <id>compile-binding</id>
+                    <goals>
+                        <goal>bind</goal>
+                    </goals>
+                    <configuration>
+                        <directory>target/generated-sources</directory>
+                        <includes>
+                          <include>base-binding.xml</include>
+                        </includes>
+                    </configuration>
+                </execution>
+        </executions>
+	  </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>org.jibx.ota.base.*</Export-Package>
+            <Import-Package>org.jibx.ota.*,
+            	*;resolution:=optional</Import-Package>
+            <!-- Even though it is not necessary to include the binding files in the module, it is a good practice so any extension modules can find this resource -->
+            <Include-Resource>META-INF/base-binding.xml=${basedir}/target/generated-sources/base-binding.xml</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+ 
+  <dependencies>
+	<dependency>
+	  <groupId>org.jibx</groupId>
+	  <artifactId>jibx-run</artifactId>
+	  <version>${jibx-version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.jibx</groupId>
+	  <artifactId>jibx-extras</artifactId>
+	  <version>${jibx-version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>joda-time</groupId>
+	  <artifactId>joda-time</artifactId>
+	  <version>1.6</version>
+	</dependency>
+  </dependencies>
+
+</project>
+---
+
+
+* JiBX Module using the base module in the previous example.
+
+	Here is the sample:
+
+---
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.jibx.ota.osgi</groupId>
+  <artifactId>jibx-ota-osgi-air</artifactId>
+  <version>1.2.3</version>
+  <packaging>bundle</packaging>
+
+  <name>jibx-ota-osgi-air (opentravel OSGI air bundle)</name>
+
+  <build>
+    <!-- This is a standard configuration, move it up -->
+    <plugins>
+
+      <plugin>
+        <groupId>org.jibx</groupId>
+        <artifactId>maven-jibx-plugin</artifactId>
+        <version>${jibx-version}</version>
+
+        <executions>
+          <execution>
+            <id>generate-java-code-from-schema</id>
+            <goals>
+              <goal>schema-codegen</goal>
+            </goals>
+	        <configuration>
+	        	<directory>${schemaDirectory}</directory>
+	            <customizations>
+	            	<customization>${basedir}/custom-modular-air.xml</customization>
+	            </customizations>
+	            <includes>
+	                <include>OTA_Air*RS.xsd</include>
+	                <include>OTA_Air*RQ.xsd</include>
+	            </includes>
+                <includeBindings>
+                  <includeBinding>${basedir}/../jibx-ota-osgi-base/target/generated-sources/base-binding.xml</includeBinding>
+                </includeBindings>
+	        </configuration>
+          </execution>
+          <execution>
+              <id>compile-binding</id>
+              <goals>
+                  <goal>bind</goal>
+              </goals>
+              <configuration>
+                  <directory>target/generated-sources</directory>
+                  <includes>
+                    <include>air-binding.xml</include>
+                  </includes>
+              </configuration>
+          </execution>
+        </executions>
+	  </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>org.jibx.ota.air.*</Export-Package>
+            <Import-Package>org.jibx.ota.*,
+            	*;resolution:=optional</Import-Package>
+            <!-- Even though it is not necessary to include the binding files in the module, it is a good practice so any extension modules can find this resource -->
+            <Include-Resource>META-INF/air-binding.xml=${basedir}/target/generated-sources/base-binding.xml</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>org.jibx.ota.osgi</groupId>
+      <artifactId>jibx-ota-osgi-base</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>
+---
+
+   Note: This module includes the base module as a dependency AND the schema-codegen goal points to the base binding file.

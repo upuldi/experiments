@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="TradeProcess" table="TRADE_PROCESS">
+
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>
+
+        <property name="date" column="DATE" />
+		<property name="ticker" column="TICKER" />
+		<property name="processed" column="PROCESSED" />
+		<property name="info" column="INFO" />
+
+	</class>
+
+    <query name="getNextNotProcessedTradeEntriesForTheDay"> from TradeProcess where date = :date and processed = 'NO' </query>
+
+
+</hibernate-mapping>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+  <properties>
+    <title>jibx:test-bind</title>
+  </properties>
+  <body>
+    <section name="jibx:test-bind">
+      <p><strong>Full name</strong>:</p>
+      <p>org.jibx:maven-jibx-plugin:1.2.2:test-bind</p>
+      <p><strong>Description</strong>:</p>
+      <div>Runs the JiBX binding compiler on the test classes.</div>
+      <p><strong>Attributes</strong>:</p>
+      <ul>
+        <li>Requires a Maven 2.0 project to be executed.</li>
+        <li>Requires dependency resolution of artifacts in scope: <code>test-compile</code>.</li>
+        <li>Binds by default to the lifecycle phase: <code>process-test-classes</code>.</li>
+      </ul>
+      <subsection name="Required Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#directory">directory</a></strong></td>
+            <td><code>String</code></td>
+            <td><code>-</code></td>
+            <td>The directory which contains binding files.<br/><strong>Default value is</strong>: <code>src/test/config</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#load">load</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag for test loading generated/modified classes.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#multimodule">multimodule</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag multi-module mode.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#validate">validate</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag for test loading generated/modified classes.<br/><strong>Default value is</strong>: <code>true</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#verbose">verbose</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag for verbose processing reports.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="#verify">verify</a></strong></td>
+            <td><code>boolean</code></td>
+            <td><code>-</code></td>
+            <td>Control flag for verifying generated/modified classes with BCEL.<br/><strong>Default value is</strong>: <code>false</code>.</td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Optional Parameters">
+        <table border="0" align="left">
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><strong><a href="#excludes">excludes</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Exclude pattern for binding files.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#includes">includes</a></strong></td>
+            <td><code>ArrayList</code></td>
+            <td><code>-</code></td>
+            <td>Include pattern for binding files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a
+href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> binding.xml.<br/></td>
+          </tr>
+          <tr>
+            <td><strong><a href="#modules">modules</a></strong></td>
+            <td><code>HashSet</code></td>
+            <td><code>-</code></td>
+            <td>A list of modules to search for binding files in the format:
+groupID:artifactID<br/></td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Parameter Details">
+        <p><strong><a name="directory">directory</a>:</strong></p>
+        <div>The directory which contains binding files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.lang.String</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${directory}</code></li>
+          <li><strong>Default</strong>: <code>src/test/config</code></li>
+        </ul><hr/><p><strong><a name="excludes">excludes</a>:</strong></p>
+        <div>Exclude pattern for binding files.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${excludes}</code></li>
+        </ul><hr/><p><strong><a name="includes">includes</a>:</strong></p>
+        <div>Include pattern for binding files.<br />
+<b>Note:</b> Uses the standard filter format described in the
+plexus <a
+href="http://plexus.codehaus.org/plexus-utils/apidocs/org/codehaus/plexus/util/DirectoryScanner.html">
+DirectoryScanner</a>.<br />
+<b>Defaults value is:</b> binding.xml.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.ArrayList</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${includes}</code></li>
+        </ul><hr/><p><strong><a name="load">load</a>:</strong></p>
+        <div>Control flag for test loading generated/modified classes.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${load}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="modules">modules</a>:</strong></p>
+        <div>A list of modules to search for binding files in the format:
+groupID:artifactID</div>
+        <ul>
+          <li><strong>Type</strong>: <code>java.util.HashSet</code></li>
+          <li><strong>Required</strong>: <code>No</code></li>
+          <li><strong>Expression</strong>: <code>${modules}</code></li>
+        </ul><hr/><p><strong><a name="multimodule">multimodule</a>:</strong></p>
+        <div>Control flag multi-module mode.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${multi-module}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="validate">validate</a>:</strong></p>
+        <div>Control flag for test loading generated/modified classes.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${validate}</code></li>
+          <li><strong>Default</strong>: <code>true</code></li>
+        </ul><hr/><p><strong><a name="verbose">verbose</a>:</strong></p>
+        <div>Control flag for verbose processing reports.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${verbose}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul><hr/><p><strong><a name="verify">verify</a>:</strong></p>
+        <div>Control flag for verifying generated/modified classes with BCEL.</div>
+        <ul>
+          <li><strong>Type</strong>: <code>boolean</code></li>
+          <li><strong>Required</strong>: <code>Yes</code></li>
+          <li><strong>Expression</strong>: <code>${verify}</code></li>
+          <li><strong>Default</strong>: <code>false</code></li>
+        </ul>
+      </subsection>
+    </section>
+  </body>
+</document>

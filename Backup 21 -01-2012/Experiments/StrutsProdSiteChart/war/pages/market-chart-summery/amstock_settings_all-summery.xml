@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Only the settings with values not equal to defaults are in this file. If you want to see the
+full list of available settings, check the amstock_settings.xml file in the amstock folder. -->
+<settings>
+  <margins>0</margins>                                                   
+  <text_size>10</text_size>                                               
+
+  <header>
+    <enabled>false</enabled>
+  </header>
+
+  <number_format>  
+    <letters>
+       <letter number="1000">K</letter>
+       <letter number="1000000">M</letter>
+       <letter number="1000000000">B</letter>
+    </letters>      
+  </number_format>
+
+  <data_sets> 
+
+     <data_set did="0">
+         <title>Market Turn Over</title>
+         <short>Turnover</short>
+          <description>Thick Pale Latex Crepe Grade 2</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=MTURNOVER</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+     </data_set>
+      <data_set did="1">
+         <title>Total Trades</title>
+         <short>DomesticTrades</short>
+          <description>Thick Pale Latex Crepe Grade 4</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=ALLTRADE</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+      <data_set did="2">
+         <title>Total Domestic Trades</title>
+         <short>DomesticTrades</short>
+          <description>Thick Pale Latex Crepe Grade 4</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=DOMTRADE</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+      <data_set did="3">
+         <title>Total Forign Trades</title>
+         <short>Forign Trades</short>
+          <description>Thick Pale Latex Crepe Grade 5</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=FORTRADE</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+
+      <data_set did="4">
+         <title>Total Domestic Purchase</title>
+         <short>Domestic Purchase</short>
+          <description>Ribbed Smoked Sheets (RSS) Grade 1</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=DOMPER</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+      <data_set did="5">
+         <title>Total Domestic Sales</title>
+         <short>Domestic Sales</short>
+          <description>Ribbed Smoked Sheets (RSS) Grade 2</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=DOMSALE</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+      <data_set did="6">
+         <title>Total Forign Purchase</title>
+         <short>Forign Purchase</short>
+          <description>Ribbed Smoked Sheets (RSS) Grade 3</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=FORPER</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+      <data_set did="7">
+         <title>Total Foreign Sales</title>
+         <short>Foreign Sales</short>
+          <description>Ribbed Smoked Sheets (RSS) Grade 4</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=FORSALE</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+
+      <data_set did="8">
+         <title>Total Volume Of Turnover</title>
+         <short>Volume All</short>
+          <description>Total Volume Of Turnover</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=TOTVOL</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+
+      <data_set did="9">
+         <title>Domestic Volume</title>
+         <short>Domestic Volue</short>
+          <description>Domestic Volue</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=DOMVOL</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+
+      <data_set did="10">
+         <title>Forign Volume</title>
+         <short>Forign Volue</short>
+          <description>Forign Volue</description>
+         <file_name>http://localhost:9090/struts-site/getMarketSummeryDataMarketDataAction.action?type=FORVOL</file_name>
+         <csv>
+           <reverse>true</reverse>
+           <separator>,</separator>
+           <date_format>YYYY-MM-DD</date_format>
+           <decimal_separator>.</decimal_separator>
+           <columns>
+             <column>date</column>
+             <column>close</column>
+           </columns>
+         </csv>
+      </data_set>
+
+  </data_sets>
+
+  <charts>
+  	<chart cid="0">
+  		<bg_color>f5f5f5,ffffff</bg_color>
+      <border_color>#CCCCCC</border_color>
+      <border_alpha>100</border_alpha>
+     
+      <grid>
+        <x>
+          <dashed>true</dashed>    
+        </x>
+        
+       
+        <y_right>
+          <color>cccccc</color>
+          <alpha>100</alpha>
+          <dashed>true</dashed>    
+        </y_right>    
+      </grid>	
+
+      <legend>
+        <graph_on_off>false</graph_on_off>
+        <fade_others_to>10</fade_others_to>
+        <show_date>true</show_date>
+      </legend>
+
+  		<graphs>
+  			<graph gid="0">
+  			  <axis>right</axis>
+  				<type>line</type>
+  				<data_sources>
+  				  <close>close</close>
+          </data_sources>
+          
+          <compare_source>close</compare_source>
+
+  		    <legend>
+            <date key="true" title="true"><![CDATA[<b>{close}</b>]]></date>
+            <period key="true" title="true"><![CDATA[open:<b>{open}</b> low:<b>{low}</b> high:<b>{high}</b> close:<b>{close}</b>]]></period>
+            <date_comparing key="true" title="true"><![CDATA[{close.percents}]]></date_comparing>
+            <period_comparing key="true" title="true"><![CDATA[{close.percents}]]></period_comparing>
+          </legend>         
+  			</graph>  			
+  		</graphs>
+  	</chart>
+  </charts>
+  
+  
+  <data_set_selector>
+    <width>130</width>
+    <max_comparing_count>3</max_comparing_count>
+ 		<main_drop_down_title>Select:</main_drop_down_title> 		
+ 		<compare_list_box_title>Compare to:</compare_list_box_title>
+ 		<balloon_text>{title}: {description}</balloon_text>
+  </data_set_selector>
+  
+  <period_selector>
+    <button>
+      <bg_color_hover>b81d1b</bg_color_hover>
+      <bg_color_selected>b81d1b</bg_color_selected>
+      <text_color_hover>ffffff</text_color_hover>
+      <text_color_selected>ffffff</text_color_selected>
+    </button>
+  
+      <periods>
+      <period type="DD" count="1">1D</period>
+      <period type="DD" count="5">5D</period>
+      <period type="DD" count="10">10D</period>
+      <period type="MM" count="1">1M</period>
+      <period type="MM" count="3">3M</period>
+      <period type="MM" count="3">6M</period>
+      <period type="MM" count="3">9M</period>
+      <period selected="true" type="YYYY" count="1">1Y</period>
+      <period type="YYYY" count="3">3Y</period>
+      <period type="YTD" count="0">YTD</period>
+      <period type="MAX">MAX</period>
+      </periods>
+
+		<periods_title>Zoom:</periods_title>
+		<custom_period_title>Custom period:</custom_period_title> 
+  </period_selector>
+
+  <header>
+    <enabled></enabled>
+    <text><![CDATA[<b>{title}</b> ({short}) {description}]]></text>
+    <text_size>12</text_size>
+  </header>
+
+  <plot_area>
+    <border_color>cccccc</border_color>
+  </plot_area>
+
+  <scroller>
+    <enabled>true</enabled>
+    <height>50</height>    
+    <graph_data_source>close</graph_data_source>
+    <bg_color>f5f5f5,ffffff</bg_color>
+    <resize_button_style>dragger</resize_button_style>
+  </scroller>
+
+</settings>

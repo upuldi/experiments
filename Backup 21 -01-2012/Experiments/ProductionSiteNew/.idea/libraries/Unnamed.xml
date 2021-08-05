@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Unnamed">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/war/WEB-INF/lib" />
+      <root url="file://$PROJECT_DIR$/libext" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/libext" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/war/WEB-INF/lib" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+
+     <session-factory>
+        <property name="show_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</property>
+<!--        <property name="hibernate.connection.url">jdbc:mysql://csewatch.com:3306/upuldi_CSEDAILYDATA</property> -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/upuldi_CSEDAILYDATA</property>
+        <property name="hibernate.connection.username">upuldi_root</property>
+        <property name="hibernate.connection.password">rootroot</property>
+        <property name="bonecp.idleMaxAge">240</property>
+        <property name="bonecp.idleConnectionTestPeriod">60</property>
+        <property name="bonecp.partitionCount">2</property>
+        <property name="bonecp.acquireIncrement">10</property>
+        <property name="bonecp.maxConnectionsPerPartition">3</property>
+        <property name="bonecp.minConnectionsPerPartition">1</property>
+        <property name="bonecp.statementsCacheSize">50</property>
+        <property name="bonecp.releaseHelperThreads">3</property>
+
+        <mapping resource="DailyStockStatistics.hbm.xml"/>
+
+    </session-factory>
+
+
+</hibernate-configuration>

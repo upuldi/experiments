@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Unnamed">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../PDF-EXTRACT-ITEXT/lib" />
+      <root url="file://$USER_HOME$/Software/Framework/OCR/Asprise-OCR-Java-Linux_x86_32bit-4.0" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../PDF-EXTRACT-ITEXT/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Software/Framework/OCR/Asprise-OCR-Java-Linux_x86_32bit-4.0" recursive="false" />
+  </library>
+</component>

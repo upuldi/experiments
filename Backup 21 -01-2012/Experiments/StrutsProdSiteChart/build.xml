@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="chart" default="build" basedir=".">
+    <!-- Arguments to gwtc and devmode targets -->
+    <property name="gwt.args" value=""/>
+
+    <!-- Configure path to GWT SDK -->
+    <property name="proj.tomcat.home" value="/home/udoluweera/Servers/production-site/apache-tomcat-5.5.28/"/>
+    <property name="proj.webapp.name" value="struts-site"/>
+    <property name="proj.dist.dir" value="${basedir}/war"/>
+
+    <path id="project.class.path">
+        <pathelement location="war/WEB-INF/classes"/>
+        <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
+        <fileset dir="ext-lib" includes="**/*.jar"/>
+    </path>
+
+    <target name="libs" description="Copy libs to WEB-INF/lib">
+        <mkdir dir="war/WEB-INF/lib"/>
+        <!-- Add any additional server libs that need to be copied -->
+    </target>
+
+    <target name="javac" depends="libs" description="Compile java source">
+        <mkdir dir="war/WEB-INF/classes"/>
+        <javac srcdir="src" includes="**" encoding="utf-8"
+               destdir="war/WEB-INF/classes"
+               source="1.5" target="1.5" nowarn="true"
+               debug="true" debuglevel="lines,vars,source">
+            <classpath refid="project.class.path"/>
+        </javac>
+        <copy todir="war/WEB-INF/classes">
+            <fileset dir="src" excludes="**/*.java"/>
+        </copy>
+    </target>
+
+    <target name="devmode" depends="javac" description="Run development mode">
+        <java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
+            <classpath>
+                <pathelement location="src"/>
+                <path refid="project.class.path"/>
+            </classpath>
+            <jvmarg value="-Xmx256M"/>
+            <arg value="-startupUrl"/>
+            <arg value="chart.html"/>
+            <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
+            <arg line="${gwt.args}"/>
+            <arg value="com.test.chart"/>
+        </java>
+    </target>
+
+    <target name="hosted" depends="devmode"
+            description="Run development mode (NOTE: the 'hosted' target is deprecated)"/>
+
+    <target name="build" description="Build this project"/>
+
+    <target name="war" depends="build" description="Create a war file">
+        <zip destfile="chart.war" basedir="war"/>
+    </target>
+
+    <target name="clean" description="Cleans this project">
+        <delete dir="war/WEB-INF/classes" failonerror="false"/>
+        <delete dir="war/chart" failonerror="false"/>
+        <delete dir="${proj.tomcat.home}/webapps/${proj.webapp.name}" failonerror="false"/>
+    </target>
+
+    <target name="deploy-tomcat" description="Deploys on Tomcat">
+        <echo message="##############################################################"/>
+        <echo message="#                      Deploys on Tomcat                     #"/>
+        <echo message="##############################################################"/>
+
+        <mkdir dir="${proj.tomcat.home}/webapps/${proj.webapp.name}"/>
+
+        <copy todir="${proj.tomcat.home}/webapps/${proj.webapp.name}" overwrite="true">
+            <fileset dir="${proj.dist.dir}/"/>
+        </copy>
+    </target>
+
+    <target name="Stop-tomcat" description="Deploys on Tomcat">
+        <echo message="STOP Tomcat"/>
+        <java jar="${proj.tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${proj.tomcat.home}"/>
+            <arg line="stop"/>
+        </java>
+    </target>
+
+    <target name="start-tomcat">
+
+        <echo message="Start Tomcat in Debug mode"/>
+
+        <java jar="${proj.tomcat.home}/bin/bootstrap.jar" fork="true">
+            <jvmarg value="-Dcatalina.home=${proj.tomcat.home}"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=5556,server=y,suspend=n"/>
+        </java>
+    </target>
+
+    <target name="clean-deploy">
+        <echo message="CLEAN DEPLOY"/>
+        <antcall target="Stop-tomcat"/>
+        <antcall target="clean"/>
+        <antcall target="javac"/>
+        <antcall target="deploy-tomcat"/>
+        <antcall target="start-tomcat"/>
+    </target>
+
+
+</project>

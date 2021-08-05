@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <import resource="DaoContext.xml" />
+
+    <bean id="eODDataManager" class="com.manager.EODDataManagerImpl">
+        <property name="eodDataDao"  ref="eODDataDao"/>
+    </bean>
+
+    <bean id="cSEListedCompanyManager" class="com.manager.CSEListedCompanyManagerImpl">
+        <property name="cseListedCompanyDao"  ref="cSEListedCompanyDao"/>
+    </bean>
+
+    <!-- chart test managers -->
+    <bean id="rubberAuctionManager" class="com.manager.RubberAuctionManagerImpl">
+        <property name="rubberAuctionDao" ref="rubberAuctionDao"/>
+    </bean>
+
+
+
+</beans>

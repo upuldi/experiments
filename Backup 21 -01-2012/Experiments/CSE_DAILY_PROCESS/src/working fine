@@ -1,0 +1,190 @@
+package com.test;
+
+import com.domain.Span;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlDivision;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlSpan;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.util.*;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: udoluweera
+ * Date: 9/6/11
+ * Time: 10:10 AM
+ * To change this template use File | Settings | File Templates.
+ */
+public class EngineExactPositions {
+
+    private static Logger log = Logger.getLogger(EngineExactPositions.class);
+
+
+    public static void main(String[] args) throws IOException {
+
+
+        log.debug("Starting.....");
+
+        final WebClient webClient = new WebClient();
+        final HtmlPage page = webClient.getPage("file:///home/udoluweera/Experiments/CSE_DAILY_PROCESS/input/page57-exact.html");
+
+
+        Iterator<HtmlElement> iteratorHtmlElement = page.getAllHtmlChildElements().iterator();
+
+        Map<Integer, HtmlDivision> divCountMap = new HashMap<Integer, HtmlDivision>();
+        Map<HtmlDivision, Integer> divContentMap = new HashMap<HtmlDivision, Integer>();
+
+        Map<Integer, List<Span>> spanTopMapRow = new TreeMap<Integer, List<Span>>();
+
+
+        int divCount = 1;
+        while (iteratorHtmlElement.hasNext()) {
+
+            HtmlElement currentElement = iteratorHtmlElement.next();
+
+
+            if (currentElement instanceof HtmlSpan) {
+
+                HtmlSpan htmlSpan = (HtmlSpan) currentElement;
+
+                String arributeString = htmlSpan.getAttribute("style");
+                log.debug(arributeString);
+
+                String[] attributeSectionsArray = arributeString.split("[;]");
+
+                String leftString = "";
+                String topString = "";
+                String fontSizeString = "";
+                String widthSizeString = "";
+                String heightString = "";
+
+                String leftStringValueOnly = "";
+                String topStringValueOnly = "";
+                String fontSizeStringValueOnly = "";
+                String widthSizeStringValueOnly = "";
+                String heightStringValueOnly = "";
+
+
+                for (String arrayElement : attributeSectionsArray) {
+
+                    if (arrayElement.contains("left")) {
+                        leftString = arrayElement;
+                        if (-1 != leftString.indexOf(":") && -1 != leftString.indexOf("p")) {
+                            leftStringValueOnly = leftString.substring(leftString.indexOf(":") + 1, leftString.indexOf("p"));
+                        }
+                    }
+                    if (arrayElement.contains("top")) {
+                        topString = arrayElement;
+                        if (-1 != topString.indexOf(":") && -1 != topString.indexOf("p")) {
+                            topString = topString.substring(topString.indexOf(":") + 1, topString.length());
+                            topStringValueOnly = topString.substring(0, topString.indexOf("p"));
+                        }
+                    }
+                    if (arrayElement.contains("font-size")) {
+                        fontSizeString = arrayElement;
+                        if (-1 != fontSizeString.indexOf(":") && -1 != fontSizeString.indexOf("p")) {
+                            fontSizeStringValueOnly = fontSizeString.substring(fontSizeString.indexOf(":") + 1, fontSizeString.indexOf("p"));
+                        }
+                    }
+                    if (arrayElement.contains("width")) {
+                        widthSizeString = arrayElement;
+                        if (-1 != widthSizeString.indexOf(":") && -1 != widthSizeString.indexOf("p")) {
+                            widthSizeStringValueOnly = widthSizeString.substring(widthSizeString.indexOf(":") + 1, widthSizeString.indexOf("p"));
+                        }
+                    }
+                    if (arrayElement.contains("height")) {
+                        heightString = arrayElement;
+                        if (-1 != heightString.indexOf(":") && -1 != heightString.indexOf("p")) {
+                            heightStringValueOnly = heightString.substring(heightString.indexOf(":") + 1, heightString.indexOf("p"));
+                        }
+                    }
+                }
+
+                log.debug("leftString " + leftString);
+                log.debug("topString " + topString);
+                log.debug("fontSizeString " + fontSizeString);
+                log.debug("heightString " + heightString);
+
+                log.debug("leftStringValueOnly  " + leftStringValueOnly);
+                log.debug("topStringValueOnly " + topStringValueOnly);
+                log.debug("fontSizeStringValueOnly " + fontSizeStringValueOnly);
+                log.debug("heightStringValueOnly " + heightStringValueOnly);
+
+                Span span = new Span();
+                span.setHeight(!heightStringValueOnly.trim().equalsIgnoreCase("") ? Integer.parseInt(heightStringValueOnly) : 0);
+                span.setLeft(!leftStringValueOnly.trim().equalsIgnoreCase("") ? Integer.parseInt(leftStringValueOnly) : 0);
+                span.setTextContent(htmlSpan.asText());
+                span.setTop(!topStringValueOnly.trim().equalsIgnoreCase("") ? Integer.parseInt(topStringValueOnly) : 0);
+                span.setFontSize(!fontSizeStringValueOnly.trim().equalsIgnoreCase("") ? Integer.parseInt(fontSizeStringValueOnly) : 0);
+                span.setWidthSize(!widthSizeStringValueOnly.trim().equalsIgnoreCase("") ? Integer.parseInt(widthSizeStringValueOnly) : 0);
+
+                if (null != spanTopMapRow.get(span.getTop())) {
+
+                    List<Span> rowcontent = spanTopMapRow.get(span.getTop());
+                    rowcontent.add(span);
+
+                } else {
+
+                    List<Span> rowcontent = new ArrayList<Span>();
+                    rowcontent.add(span);
+                    spanTopMapRow.put(span.getTop(), rowcontent);
+                }
+            }
+        }
+        log.debug("Completed...");
+
+        //Set<Map.Entry<String,List<Span>>> entry = spanTopMapRow.entrySet();
+
+
+        for (Integer key : spanTopMapRow.keySet()) {
+
+            List<Span> spanList = spanTopMapRow.get(key);
+            Collections.sort(spanList);
+
+            String rowContent = "";
+            boolean previousEmpty = false;
+            boolean previousEmptyMoreThanOnce = false;
+            String previousValue = null;
+
+            List<Span> formattedSpanList = new ArrayList<Span>();
+
+            for (Span span : spanList) {
+
+                String currentValue = span.getTextContent();
+
+                if (null == previousValue) {
+
+                    previousValue = currentValue;
+                }
+
+                if (currentValue.equalsIgnoreCase("")) {
+
+                    if (previousEmpty == true) {
+                         previousEmptyMoreThanOnce = true;
+                    } else {
+                        previousEmptyMoreThanOnce = false;
+                    }
+
+                    previousEmpty = true;
+
+                } else {
+
+                    if (previousEmptyMoreThanOnce == true || (previousEmptyMoreThanOnce == false && previousEmpty == true)) {
+                        rowContent = rowContent + " " + currentValue;
+                    }   else {
+                        rowContent = rowContent + currentValue;
+                    }
+                    previousValue = currentValue;
+                    previousEmpty = false;
+                    previousEmptyMoreThanOnce = false;
+
+                }
+            }
+            log.debug("ROW CONTENT IS :: " + rowContent);
+        }
+
+    }
+}

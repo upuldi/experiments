@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+    <!-- ========================================================== -->
+    <!-- General -->
+    <!-- ========================================================== -->
+    <display-name>CSW</display-name>
+    <description>CSE Watch</description>
+
+
+    <!-- ========================================================== -->
+    <!-- Listeners -->
+    <!-- ========================================================== -->
+    <listener>
+        <listener-class>com.framework.ApplicationStartup</listener-class>
+    </listener>
+
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/conf/spring/*.xml</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>context</servlet-name>
+        <servlet-class>org.springframework.web.context.ContextLoaderServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TradeSummeryServlet</servlet-name>
+        <servlet-class>com.servlet.TradeSummeryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TradeSummeryServlet</servlet-name>
+        <url-pattern>/tradeSummery</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestSevlet</servlet-name>
+        <servlet-class>com.servlet.TestSevlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TestSevlet</servlet-name>
+        <url-pattern>/testSevlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EODMarketDataServlet</servlet-name>
+        <servlet-class>com.servlet.EODMarketDataServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EODMarketDataServlet</servlet-name>
+        <url-pattern>/eODMarketDataServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EODRubberAuctionServlet</servlet-name>
+        <servlet-class>com.servlet.EODRubberAuctionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EODRubberAuctionServlet</servlet-name>
+        <url-pattern>/eODRubberAuctionServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EODTradingSummeryServlet</servlet-name>
+        <servlet-class>com.servlet.EODTradingSummeryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EODTradingSummeryServlet</servlet-name>
+        <url-pattern>/eODTradingSummeryServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestTimeServlet</servlet-name>
+        <servlet-class>com.servlet.TestTimeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TestTimeServlet</servlet-name>
+        <url-pattern>/testTimeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EODTradeDataServlet</servlet-name>
+        <servlet-class>com.servlet.EODTradeDataServlet</servlet-class>
+    </servlet>
+
+    <!-- Action related to trade data donuts  -->
+    <servlet-mapping>
+        <servlet-name>EODTradeDataServlet</servlet-name>
+        <url-pattern>/eodTradeDataServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EODPdfSaveServlet</servlet-name>
+        <servlet-class>com.servlet.EODPdfSaveServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EODPdfSaveServlet</servlet-name>
+        <url-pattern>/eODPdfSaveServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProcessTradeDataFilesServlet</servlet-name>
+        <servlet-class>com.servlet.ProcessTradeDataFilesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProcessTradeDataFilesServlet</servlet-name>
+        <url-pattern>/processTradeDataFilesServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DataProjEODCompanyCode</servlet-name>
+        <servlet-class>com.servlet.DataProjEODCompanyCode</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DataProjEODCompanyCode</servlet-name>
+        <url-pattern>/dataProjEODCompanyCode</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- The Usual Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Resources -->
+<!--    <resource-ref>
+        <description>Mysql data source</description>
+        <res-ref-name>jdbc/mysql</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>-->
+
+</web-app>
+
+

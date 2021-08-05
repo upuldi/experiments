@@ -1,0 +1,6 @@
+<custom>
+  <package name="org.jibx.starter" property-access="true">
+    <class name="Address" includes="street1 street2 city state postCode country"/>
+    <class name="Item" excludes="description"/>
+  </package>
+</custom>

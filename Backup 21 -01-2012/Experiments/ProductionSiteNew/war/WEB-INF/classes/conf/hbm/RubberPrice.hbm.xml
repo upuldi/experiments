@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+	<!-- Hibernate Mapping for domain class DailyTrades -->
+<hibernate-mapping package="com.domain">
+
+	<class name="RubberPrice" table="RUBBER_AUCTION_PRICE">
+
+		<id name="id" column="ID" type="long">
+			<generator class="native" />
+		</id>
+
+		<property name="item" column="ITEM" />
+		<property name="priceLKR" column="PRICE_LKR" />
+		<property name="priceUSD" column="PRICE_USD" />
+		<property name="date" column="DATE" />
+
+	</class>
+
+</hibernate-mapping>

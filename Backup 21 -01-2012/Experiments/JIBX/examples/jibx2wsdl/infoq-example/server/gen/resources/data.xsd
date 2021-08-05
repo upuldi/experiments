@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.sosnoski.com/order/data" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.sosnoski.com/order/data">
+    <xs:complexType name="order">
+        <xs:annotation>
+            <xs:documentation>Order information.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="customerName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Customer name.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="billTo" type="tns:address">
+                <xs:annotation>
+                    <xs:documentation>Billing address information.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item">
+                <xs:complexType>
+                    <xs:sequence/>
+                    <xs:attribute name="id" type="xs:string" use="required"/>
+                    <xs:attribute name="quantity" type="xs:int" use="required"/>
+                    <xs:attribute name="price" type="xs:float" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="orderId" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Unique identifier for this order. This is added to the order information by the service.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="shipTo" type="tns:address">
+                <xs:annotation>
+                    <xs:documentation>Shipping address information. If missing, the billing address is also used as the shipping address.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="customerId" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Customer identifier code.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="orderDate" type="xs:date">
+            <xs:annotation>
+                <xs:documentation>Date order was placed with server. This is added to the order information by the service.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="shipDate" type="xs:date">
+            <xs:annotation>
+                <xs:documentation>Date order was shipped. This is added to the order information by the service.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="street1" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element minOccurs="0" name="street2" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="state" type="xs:string" use="required"/>
+        <xs:attribute name="zip" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>
